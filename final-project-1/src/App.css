@@ -1,0 +1,58 @@
+
+/*****HEADER COMPONENT CSS*****/
+.navbar {
+  background-color: #1782B4;
+  height: 70px;
+  padding: 10px;
+}
+
+/*spaces navbar evenly and gets rid of bullet points*/
+.navbar ul{
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*Aligns and centers icon&text (for non-route icons only)*/
+.navitems li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*icon text*/
+.navitems li span {
+  font-size: 20px;
+  color: #FEFEFE;
+}
+
+/*icons*/
+.icon {
+  display: block;
+  width: 35px;
+  height: 35px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+/*charlotte icon*/
+.navitems li img {
+  width: 200px;
+}
+
+/*Aligns, centers, and gets rid of underline for icon&text (for route icons only)*/
+.navitems li a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*highlights icon that is showing corresponding content on screen*/
+.navitems li a.active .icon,
+.navitems li a.active span {
+  color: #FFEFAF; 
+}
