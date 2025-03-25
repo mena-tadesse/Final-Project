@@ -8,10 +8,6 @@ import { FaRegCalendarDays } from "react-icons/fa6";
 import { TbLogin2 } from "react-icons/tb";
 import { useLocation, Link } from "react-router-dom";
 
-
-
-
-
 const Header = () => {
 
     //gets current route
@@ -38,7 +34,7 @@ const Header = () => {
                 <li>
                     {/*linking icon to home route. if the current route is equal to home, then the className is set to active*/}
                     <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-                        <img src="/Images/CharlotteIcon.png" />
+                        <img src="/Images/CharlotteIcon.png" alt="HomeButton"/>
                     </Link>
                 </li>
                 <li><MdOutlineLanguage className="icon"/><span>Español</span></li>
@@ -48,7 +44,11 @@ const Header = () => {
                         <FaRegCalendarDays className="icon"/><span>Calendar</span>
                     </Link>
                 </li>
-                <li><TbLogin2 className="icon"/><span>Login</span></li>
+                <li>
+                    <Link to="/login">
+                        <TbLogin2 className="icon"/><span>Login</span>
+                    </Link>
+                </li>
             </ul>
         </nav>
     )

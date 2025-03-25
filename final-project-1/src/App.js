@@ -8,6 +8,8 @@ import EventDetail from './components/EventDetail';
 import Account from './components/Account';
 import Calendar from './components/Calendar';
 import Bookmarks from './components/Bookmarks';
+import Login from './components/Login';
+import SignUp from './components/SignUp'
 
 function App() {
   return (
@@ -17,10 +19,14 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/events" element={<Events />} >
+          {/*Event Detail is nested in Events*/}
             <Route path="eventdetail" element={<EventDetail />} />
           </Route>
           <Route path="/account" element={<Account />} > 
+            {/*Bookmarks is nested in Account*/}
             <Route path="bookmarks" element={<Bookmarks />} />
           </Route>
           <Route path="/calendar" element={<Calendar />} />
