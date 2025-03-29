@@ -1,3 +1,11 @@
+/*****BODY CSS*****/
+
+/*prevents scrolling*/
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
 /*****HEADER COMPONENT CSS*****/
 .navbar {
@@ -56,3 +64,111 @@
 .navitems li a.active span {
   color: #FFEFAF; 
 }
+
+/*****LOGIN & SIGN UP COMPONENT CSS*****/
+/*background image*/
+.login-background-container {
+  background: url('Images/authentication_background.jpg') no-repeat center center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*container for login details*/
+.login-container{
+  display: flex;
+  flex-direction: column;
+  width: 55vw;
+  height: 92vh;
+  top: 50%;
+  margin: 30px 10px 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+/*centers the charlotte icon*/
+.login-container img {
+  width: 100px;
+  margin: 20px auto;
+  opacity: 0.8;
+  margin: 20px auto;
+}
+.login-container img:hover {
+  opacity: 1;
+}
+
+.auth-details-alignment {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 60%;
+}
+
+.auth-details-alignment p {
+  font-size: large;
+  font-weight: semibold;
+}
+
+.auth-details-alignment label {
+  font-size: small;
+  margin-bottom: 5px;
+}
+
+.auth-details-alignment input {
+  margin-bottom: 15px;
+  padding: 10px;
+  opacity: 0.6;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #8F8F8F;
+  border-width: 1px;
+}
+
+.auth-details-alignment button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1782B4;
+  margin-top: 30px;
+  color: white;
+  font-size: large;
+  font-weight: semibold;
+}
+
+.social-media {
+  margin: 50px auto;
+  display: flex;
+  justify-content: center; /* Centers the social media icons */
+  align-items: center; /* Aligns them vertically in the center */
+  gap: 20px; /* Adds space between the icons */
+
+}
+
+.twitter {
+  width: 60px; 
+  height: 60px; 
+  object-fit: contain; /* Ensures the image fits within the box without distortion */
+}
+
+.instagram {
+  width: 45px; 
+  height: 45px;
+  object-fit: contain;
+}
+
+.facebook {
+  width: 47px; 
+  height: 47px; 
+  object-fit: contain; 
+}
+
+.signup-path-container {
+  background-color: #1782B4;
+  height: 100%;
+  width: 45vw;
+}
+

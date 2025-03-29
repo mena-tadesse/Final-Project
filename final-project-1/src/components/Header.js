@@ -34,7 +34,7 @@ const Header = () => {
                 <li>
                     {/*linking icon to home route. if the current route is equal to home, then the className is set to active*/}
                     <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-                        <img src="/Images/CharlotteIcon.png" alt="HomeButton"/>
+                        <img src="../Images-Header/CharlotteIcon.png" alt="HomeButton"/>
                     </Link>
                 </li>
                 <li><MdOutlineLanguage className="icon"/><span>Español</span></li>

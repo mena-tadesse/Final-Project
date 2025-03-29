@@ -11,12 +11,13 @@ import Bookmarks from './components/Bookmarks';
 import Login from './components/Login';
 import SignUp from './components/SignUp'
 
+
 function App() {
   return (
     <div className="App">
     {/*Create the routes*/}
       <BrowserRouter>
-        <Header />
+        {window.location.pathname !== "/login" && window.location.pathname !== "/signup" && <Header />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
