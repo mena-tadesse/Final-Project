@@ -1,28 +1,48 @@
 import React, { useState } from 'react';
 import { auth } from '../config/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 
 
 const Login = () => {
 
-    /*
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const { login, error } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogin = async (e) => { 
+        e.preventDefault();
+        setErrorMessage(""); //Clears any previous error messages
+        try {
+            await login(email, password);
+            navigate("/account"); //Redirect of account page after logging in
+        } catch (error) {
+            if (error.code === "auth/user-not-found") {
+                setErrorMessage("User does not exist. Please check your email or sign up.");
+            } else if (error.code === "auth/wrong-password") {
+                setErrorMessage("Incorrect password. Please try again.");
+            } else if (error.code === "auth/invalid-email") {
+                setErrorMessage("Invalid email format. Please enter a valid email.");
+            } else {
+                setErrorMessage("An error occurred. Please try again later.");
+            }
+        }
+    };
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     }
 
+
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     }
 
-    const logIn = async () => {
-        await createUserWithEmailAndPassword(auth, email, password);
-    };
-*/
+
     return (
         <div className="login-background-container">
             <div className="login-container">
@@ -30,12 +50,14 @@ const Login = () => {
                         <img src="../Images/CharlotteIcon.png" alt="Home Button" />
                     </Link>
                     <div className="auth-details-alignment">
+                        <form onSubmit={handleLogin}>
                         <p>LOGIN</p>
                         <label for="login_email">Email</label>
-                        <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com"/>
+                        <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com" onChange={handleEmailChange} required/>
                         <label for="login_password">Password</label>
-                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123"/>
+                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" onChange={handlePasswordChange} required/>
                         <button type="submit">LOGIN</button>
+                        </form>
                         <div className="social-media">
                             <a href="https://twitter.com/charlottgotalot" target="_blank"><img src="../Images/twittericon.png" alt="twitter icon" className="twitter"/></a>
                             <a href="https://www.facebook.com/charlottesgotalot/" target="_blank"><img src="../Images/facebook.png" alt="facebook icon" className="facebook" /></a>
