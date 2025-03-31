@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { auth } from '../config/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { Link } from "react-router-dom";
+
 
 
 const Login = () => {
@@ -24,7 +26,9 @@ const Login = () => {
     return (
         <div className="login-background-container">
             <div className="login-container">
-                    <img src="../Images-Header/CharlotteIcon.png" alt="Home Button" />
+                    <Link to="/">
+                        <img src="../Images/CharlotteIcon.png" alt="Home Button" />
+                    </Link>
                     <div className="auth-details-alignment">
                         <p>LOGIN</p>
                         <label for="login_email">Email</label>
@@ -33,14 +37,27 @@ const Login = () => {
                         <input id="login_password" className="authentication_info" type="password" placeholder="abc123"/>
                         <button type="submit">LOGIN</button>
                         <div className="social-media">
-                            <a href="https://twitter.com/charlottgotalot"><img src="../Images-Header/twittericon.png" alt="twitter icon" className="twitter"/></a>
-                            <a href="https://www.facebook.com/charlottesgotalot/"><img src="../Images-Header/facebook.png" alt="facebook icon" className="facebook" /></a>
-                            <a href="https://www.instagram.com/charlottesgotalot/"><img src="../Images-Header/instagram_icon.png" alt="instagram icon" className="instagram"  /></a>
+                            <a href="https://twitter.com/charlottgotalot" target="_blank"><img src="../Images/twittericon.png" alt="twitter icon" className="twitter"/></a>
+                            <a href="https://www.facebook.com/charlottesgotalot/" target="_blank"><img src="../Images/facebook.png" alt="facebook icon" className="facebook" /></a>
+                            <a href="https://www.instagram.com/charlottesgotalot/" target="_blank"><img src="../Images/instagram_icon.png" alt="instagram icon" className="instagram"  /></a>
 
                         </div>
                     </div>
             </div>
             <div className="signup-path-container">
+                <div className="signup-path-content-container">
+                    <p>WELCOME!</p>
+                    <p>
+                        "Charlotte is one of the nation's fastest-growing metropolitan areas" 
+                        <span>
+                            ~Queen City
+                        </span>
+                    </p>
+                    <p>Don't have an account?</p>
+                    <Link to="/signup">
+                        <button>SIGN UP</button>
+                    </Link>
+                </div>
             </div>
         </div> 
     )

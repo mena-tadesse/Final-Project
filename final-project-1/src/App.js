@@ -10,14 +10,21 @@ import Calendar from './components/Calendar';
 import Bookmarks from './components/Bookmarks';
 import Login from './components/Login';
 import SignUp from './components/SignUp'
+import {useLocation} from 'react-router-dom';
 
+//AppConent() is responsible for rendering the header and routes based on the current location
+function AppContent() {
+  //provides access to the current path being used
+  const location = useLocation();
 
-function App() {
+  //hideHeader is initialized to true if the current path is /login or /signup
+  const hideHeader = location.pathname === "/login" || location.pathname === "/signup";
+
   return (
     <div className="App">
-    {/*Create the routes*/}
-      <BrowserRouter>
-        {window.location.pathname !== "/login" && window.location.pathname !== "/signup" && <Header />}
+        {/*display the header if the pathName isn't login or signup*/}
+        {!hideHeader && <Header />}
+        {/*Create the routes*/}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -32,8 +39,17 @@ function App() {
           </Route>
           <Route path="/calendar" element={<Calendar />} />
         </Routes>
-      </BrowserRouter>
     </div>
+  );
+}
+
+//App() is responsible for placing the AppContent() in BrowserRouter
+//BrowserRouter is used to keep track of the current location 
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
 

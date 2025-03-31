@@ -68,7 +68,7 @@ body, html {
 /*****LOGIN & SIGN UP COMPONENT CSS*****/
 /*background image*/
 .login-background-container {
-  background: url('Images/authentication_background.jpg') no-repeat center center;
+  background: url('Image-Background/authentication_background.jpg') no-repeat center center;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -82,7 +82,7 @@ body, html {
 .login-container{
   display: flex;
   flex-direction: column;
-  width: 55vw;
+  width: 70vw;
   height: 92vh;
   top: 50%;
   margin: 30px 10px 30px;
@@ -92,15 +92,18 @@ body, html {
 
 /*centers the charlotte icon*/
 .login-container img {
+  display: block;
   width: 100px;
   margin: 20px auto;
   opacity: 0.8;
   margin: 20px auto;
 }
+
 .login-container img:hover {
   opacity: 1;
 }
 
+/*div for the form the user must fill out to login*/
 .auth-details-alignment {
   display: flex;
   flex-direction: column;
@@ -108,16 +111,19 @@ body, html {
   width: 60%;
 }
 
+/*LOGIN text css */
 .auth-details-alignment p {
   font-size: large;
   font-weight: semibold;
 }
 
+/*for all the text that corresponds to each input*/
 .auth-details-alignment label {
   font-size: small;
   margin-bottom: 5px;
 }
 
+/*css for the input textbox*/
 .auth-details-alignment input {
   margin-bottom: 15px;
   padding: 10px;
@@ -128,6 +134,7 @@ body, html {
   border-width: 1px;
 }
 
+/*the login button css*/
 .auth-details-alignment button {
   padding: 10px;
   border-radius: 10px;
@@ -139,6 +146,7 @@ body, html {
   font-weight: semibold;
 }
 
+/*div for the social media icons*/
 .social-media {
   margin: 50px auto;
   display: flex;
@@ -148,10 +156,11 @@ body, html {
 
 }
 
+/*twitter, instagram, facebook icon css*/
 .twitter {
   width: 60px; 
   height: 60px; 
-  object-fit: contain; /* Ensures the image fits within the box without distortion */
+  object-fit: contain; /* Ensures the image fits within the container without distortion */
 }
 
 .instagram {
@@ -171,4 +180,171 @@ body, html {
   height: 100%;
   width: 45vw;
 }
+
+/*container for the signup content fillers*/
+.signup-path-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+}
+
+/*targets the WELCOME element*/
+.signup-path-content-container p:first-of-type {
+  font-size: 40px;
+  font-weight: semibold;
+  margin-bottom: 30px;
+  margin-top: -50px;
+}
+
+/*targets the paragraph below WELCOME*/
+.signup-path-content-container p:nth-of-type(2) {
+  font-size: 20px;
+  font-weight: semibold;
+  font-style: italic;
+  gap: 70px;
+  text-align: center;
+}
+
+/*puts the ~Queen City on a different line*/
+.signup-path-content-container p span {
+  display: block;
+}
+
+.signup-path-content-container p:nth-of-type(3){
+  font-size: 20px;
+  text-align: center;
+}
+
+.signup-path-content-container button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  margin-top: 30px;
+  color: #1782B4;
+  font-size: large;
+  font-weight: semibold;
+  width: 150px;
+}
+
+/*div for the form the user must fill out to login*/
+.auth-details-alignment-signup{
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 60%;
+  margin-top: -10px;
+}
+
+/*SIGN UP text css */
+.auth-details-alignment-signup p {
+  font-size: large;
+  font-weight: semibold;
+}
+
+
+/*for all the text that corresponds to each input*/
+.auth-details-alignment-signup label {
+  font-size: small;
+  margin-bottom: 5px;
+}
+
+/*css for the input textbox*/
+.auth-details-alignment-signup input {
+  margin-bottom: 10px;
+  padding: 10px;
+  opacity: 0.6;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #8F8F8F;
+  border-width: 1px;
+}
+
+/*the signup button css*/
+.auth-details-alignment-signup button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1782B4;
+  margin-top: 30px;
+  color: white;
+  font-size: large;
+  font-weight: semibold;
+}
+
+/*div for the social media icons*/
+.social-media-signup {
+  margin: 50px auto;
+  margin-top: -10px;
+  display: flex;
+  justify-content: center; /* Centers the social media icons */
+  align-items: center; /* Aligns them vertically in the center */
+  gap: 20px; /* Adds space between the icons */
+
+}
+
+.login-path-container {
+  background-color: #1782B4;
+  height: 100%;
+  width: 45vw;
+}
+
+/*container for the signup content fillers*/
+.login-path-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+}
+
+/*targets the WELCOME element*/
+.login-path-content-container p:first-of-type {
+  font-size: 40px;
+  font-weight: semibold;
+  margin-bottom: 30px;
+  margin-top: -50px;
+  width: 150%;
+  text-align: center;
+}
+
+/*targets the paragraph below WELCOME*/
+.login-path-content-container p:nth-of-type(2) {
+  font-size: 20px;
+  font-weight: semibold;
+  font-style: italic;
+  gap: 70px;
+  text-align: center;
+}
+
+/*puts the ~Queen City on a different line*/
+.login-path-content-container p span {
+  display: block;
+}
+
+.login-path-content-container p:nth-of-type(3){
+  font-size: 20px;
+  text-align: center;
+}
+
+.login-path-content-container button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  margin-top: 30px;
+  color: #1782B4;
+  font-size: large;
+  font-weight: semibold;
+  width: 150px;
+}
+
 
