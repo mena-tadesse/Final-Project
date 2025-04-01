@@ -347,3 +347,42 @@ body, html {
   width: 150px;
 }
 
+* Bookmarks container styling */
+.bookmarks-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Box to hold all bookmarks */
+.bookmarks-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual bookmark item styling */
+.bookmark-item {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+}
+
+.bookmark-item h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.bookmark-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
