@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 const Account = () => {
@@ -52,6 +52,7 @@ const Account = () => {
                     </div>
                 </div>
             </div>
+            <Outlet />
         </div>
     )
 };
