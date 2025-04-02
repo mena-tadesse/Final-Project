@@ -395,16 +395,6 @@ body, html {
   height: 100vh;
 }
 
-/*
-.account-navbar h2{
-  margin-left: 25px;
-  margin-top: 25px;
-  font-size: xx-large;
-  font-weight: normal;
-  width: 20%;
-}
-*/
-
 .account-navbar {
   margin-left: 150px;
   width: 20%;
