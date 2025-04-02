@@ -33,10 +33,9 @@ function AppContent() {
           {/*Event Detail is nested in Events*/}
             <Route path="eventdetail" element={<EventDetail />} />
           </Route>
-          <Route path="/account" element={<Account />} > 
+          <Route path="/account" element={<Account />} /> 
             {/*Bookmarks is nested in Account*/}
-            <Route path="bookmarks" element={<Bookmarks />} />
-          </Route>
+          <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="/calendar" element={<Calendar />} />
         </Routes>
     </div>

@@ -46,7 +46,7 @@ const SignUp = () => {
                         <label for="login_email">Email</label>
                         <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com" onChange={handleEmailChange} required/>
                         <label for="login_password">Password</label>
-                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" onChange={handlePasswordChange} required/>
+                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" minlength="8" maxLength="12" onChange={handlePasswordChange} required/>
                         <button type="submit">SIGN UP</button>
                         </form>
                         <div className="social-media-signup">

@@ -1,0 +1,540 @@
+
+
+
+.english-light-home {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .english-light-home .div {
+  
+    width: 1728px;
+    height: 1117px;
+    position: relative;
+  }
+  
+  .english-light-home .overlap {
+    position: absolute;
+    width: 1728px;
+    height: 952px;
+    top: 0;
+    left: 0;
+  }
+  
+  .english-light-home .uptown-CLT-scaled {
+    position: absolute;
+    width: 1728px;
+    height: 525px;
+    top: 88px;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .english-light-home .activity-box {
+    position: absolute;
+    width: 582px;
+    height: 229px;
+    top: 169px;
+    left: 800px;
+  }
+  
+  .english-light-home .overlap-group {
+    position: relative;
+    width: 578px;
+    height: 229px;
+    background-color: #000000d1;
+  }
+  
+  .english-light-home .div-wrapper {
+    position: absolute;
+    width: 326px;
+    height: 72px;
+    top: 135px;
+    left: 108px;
+    background-image: url(./img/rectangle-4.svg);
+    background-size: 100% 100%;
+  }
+  
+  .english-light-home .text-wrapper {
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .english-light-home .text-wrapper-2 {
+    position: absolute;
+    width: 296px;
+    top: 30px;
+    left: 141px;
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .article {
+    top: 462px;
+    left: 53px;
+    position: absolute;
+    width: 368px;
+    height: 488px;
+  }
+  
+  .english-light-home .overlap-2 {
+    position: relative;
+    width: 366px;
+    height: 488px;
+    background-image: url(./img/image-1.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .english-light-home .text-wrapper-3 {
+    position: absolute;
+    width: 335px;
+    top: 377px;
+    left: 7px;
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .overlap-wrapper {
+    top: 464px;
+    left: 472px;
+    position: absolute;
+    width: 368px;
+    height: 488px;
+  }
+  
+  .english-light-home .overlap-3 {
+    position: relative;
+    width: 366px;
+    height: 488px;
+    background-image: url(./img/image-2.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .english-light-home .overlap-group-wrapper {
+    top: 462px;
+    left: 891px;
+    position: absolute;
+    width: 368px;
+    height: 488px;
+  }
+  
+  .english-light-home .overlap-4 {
+    position: relative;
+    width: 366px;
+    height: 488px;
+    background-image: url(./img/image-3.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .english-light-home .p {
+    position: absolute;
+    width: 335px;
+    top: 377px;
+    left: 5px;
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .article-2 {
+    top: 464px;
+    left: 1306px;
+    position: absolute;
+    width: 368px;
+    height: 488px;
+  }
+  
+  .english-light-home .overlap-5 {
+    position: relative;
+    width: 366px;
+    height: 488px;
+    background-image: url(./img/image-4.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .english-light-home .english-light-mode {
+    display: flex;
+    width: 1728px;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    padding: 0px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 88px;
+    background-color: #1682b3;
+  }
+  
+  .english-light-home .nav-item {
+    position: relative;
+    width: 190px;
+    height: 150px;
+  }
+  
+  .english-light-home .overlap-group-2 {
+    position: relative;
+    width: 166px;
+    height: 141px;
+    left: 12px;
+  }
+  
+  .english-light-home .dark-mode-icon {
+    position: absolute;
+    width: 121px;
+    height: 121px;
+    top: 0;
+    left: 21px;
+  }
+  
+  .english-light-home .group {
+    position: absolute;
+    width: 78px;
+    height: 81px;
+    top: 19px;
+    left: 21px;
+  }
+  
+  .english-light-home .events {
+    position: absolute;
+    top: 102px;
+    left: 0;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .nav-item-2 {
+    position: relative;
+    width: 126px;
+    height: 116px;
+  }
+  
+  .english-light-home .overlap-6 {
+    position: relative;
+    height: 117px;
+  }
+  
+  .english-light-home .account-icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 22px;
+  }
+  
+  .english-light-home .events-2 {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .nav-item-3 {
+    position: relative;
+    width: 130px;
+    height: 112px;
+  }
+  
+  .english-light-home .overlap-7 {
+    position: relative;
+    width: 102px;
+    height: 115px;
+    left: 14px;
+  }
+  
+  .english-light-home .events-icon {
+    position: absolute;
+    width: 83px;
+    height: 83px;
+    top: 0;
+    left: 9px;
+  }
+  
+  .english-light-home .text-wrapper-4 {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .home-icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-image: url(./img/screenshot-2025-02-04-181850-1.png);
+    background-size: 100% 100%;
+  }
+  
+  .english-light-home .nav-item-4 {
+    position: relative;
+    width: 138px;
+    height: 120px;
+  }
+  
+  .english-light-home .overlap-8 {
+    position: relative;
+    width: 119px;
+    height: 120px;
+    left: 10px;
+  }
+  
+  .english-light-home .laguage-icon {
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    top: 0;
+    left: 14px;
+  }
+  
+  .english-light-home .events-3 {
+    position: absolute;
+    top: 81px;
+    left: 0;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .overlap-9 {
+    position: relative;
+    width: 137px;
+    height: 120px;
+    left: 1px;
+  }
+  
+  .english-light-home .calendar-icon {
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    top: 0;
+    left: 23px;
+  }
+  
+  .english-light-home .nav-item-5 {
+    position: relative;
+    width: 142px;
+    height: 120px;
+  }
+  
+  .english-light-home .overlap-10 {
+    position: relative;
+    width: 90px;
+    height: 120px;
+    left: 25px;
+  }
+  
+  .english-light-home .logout-icon {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    top: 0;
+    left: 0;
+  }
+  
+  .english-light-home .events-4 {
+    position: absolute;
+    top: 81px;
+    left: 5px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .english-light-home .text-wrapper-5 {
+    position: absolute;
+    top: 1017px;
+    left: 544px;
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #000000;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  /* Existing CSS code */
+  
+  /* Add these new styles */
+  .main-content {
+    width: 100%;
+    max-width: 1728px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .hero {
+    position: relative;
+    height: 525px;
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .activity-box {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    padding-left: 2rem;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+  }
+  
+  .activity-title {
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 40px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .activity-cta {
+    display: inline-block;
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 40px;
+    background-color: #1682b3;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+  
+  .articles {
+    padding: 2rem 0;
+  }
+  
+  .section-title {
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #000000;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .article-card {
+    position: relative;
+    height: 488px;
+    overflow: hidden;
+  }
+  
+  .article-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+  
+  .article-title {
+    font-family: "Inter-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 32px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-item:hover {
+    opacity: 0.8;
+  }
+  
+  .nav-item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-text {
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 32px;
+    text-align: center;
+  }

@@ -391,3 +391,167 @@ body, html {
   margin-right: 100px;
 }
 
+/*****BOOKMARKS COMPONENT CSS*****/
+/*Bookmarks container styling */
+.bookmarks-container {
+  padding: 20px;
+  background-color: #EAEAEA;
+  height: 100vh;
+  overflow-y: auto;
+  margin-left: 50px;
+  margin-top: 90px;
+  width: 50%;
+  height: 60vh;
+  border-radius: 15px;
+}
+
+.bookmarks-container h3{
+  margin-top: 0px;
+  margin-left: 10px;
+  font-size: x-large;
+  font-weight: semibold;
+}
+
+/* Box to hold all bookmarks */
+.bookmarks-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Individual bookmark item styling */
+.bookmark-item {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+}
+
+.bookmark-item h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: semibold;
+}
+
+.bookmark-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/*****ACCOUNT COMPONENT CSS*****/
+
+.account-home-container{
+  display: flex;
+  height: 100vh;
+}
+
+.account-navbar {
+  margin-left: 150px;
+  width: 20%;
+}
+
+.account-navbar h2{
+  margin-top: 25px;
+  font-size: xxx-large;
+  font-weight: normal;
+}
+
+.account-navbar nav {
+  margin: 0;
+}
+
+.account-navbar nav ul {
+  list-style-type: none;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+.account-navbar nav ul li {
+  padding-bottom: 40px;
+  font-size: x-large;
+}
+
+.account-navbar nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.account-navbar button {
+  background-color: #A71010;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 125px;
+  height: 30px;
+  margin-top: -10px;
+  font-size: x-large;
+  font-weight: semibold;
+}
+
+.profile-container {
+  margin-left: 50px;
+  margin-top: 90px;
+  width: 50%;
+  background-color: #EAEAEA;
+  height: 60vh;
+  border-radius: 15px;
+}
+
+.profile-container h3 {
+  margin-left: 40px;
+  font-size: x-large;
+  font-weight: semibold;
+}
+
+.profile-card {
+  margin-left: 40px;
+  width: 90%;
+  height: 40vh;
+  display: flex;
+}
+
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+}
+
+.profile-image-container label {
+  font-size: small;
+  font-weight: light;
+  background-color: #D9D9D9;
+  color: #575757;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.profile-image {
+  object-fit: contain;
+  width: 150px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width: 50%;
+  height: 100%;
+}
+
+.show-password-button {
+  border-style: none;
+  background-color: #EAEAEA;
+  cursor: pointer;
+}
+
