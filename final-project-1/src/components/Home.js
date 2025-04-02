@@ -1,43 +1,41 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
-        <div className="english-light-home">
-            <main className="main-content">
-                <section className="hero">
-                    <img className="hero-image" src="img/uptown-CLT-scaled-1.png" alt="Uptown Charlotte Skyline" />
-                    <div className="activity-box">
-                        <h1 className="activity-title">EXPLORE THE QUEEN CITY</h1>
-                        <a href="#" className="activity-cta">THINGS TO DO</a>
-                    </div>
-                </section>
-                <section className="articles">
-                    <h2 className="section-title">COMING UP IN THE QUEEN CITY</h2>
-                    <div className="article-grid">
-                        <article className="article-card">
-                            <div className="article-image" style={{ backgroundImage: 'url(Placeholder.png)' }}>
-                                <h3 className="article-title">35 Things to Do this Winter in Charlotte</h3>
-                            </div>
-                        </article>
-                        <article className="article-card">
-                            <div className="article-image" style={{ backgroundImage: 'url(Placeholder.png)' }}>
-                                <h3 className="article-title">Just Opened in Charlotte - January 2025</h3>
-                            </div>
-                        </article>
-                        <article className="article-card">
-                            <div className="article-image" style={{ backgroundImage: 'url(Placeholder.png)' }}>
-                                <h3 className="article-title">Top Concerts Coming to Charlotte This Winter</h3>
-                            </div>
-                        </article>
-                        <article className="article-card">
-                            <div className="article-image" style={{ backgroundImage: 'url(Placeholder.png)' }}>
-                                <h3 className="article-title">Black-Owned Restaurants in Charlotte</h3>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-            </main>
+        <div className="home-container">
+            <div className="home-background-image">
+                <div className="explore-the-city">
+                    <p>Explore the Queen City</p>
+                    <Link to="/events"><button>THINGS TO DO</button></Link>
+                </div>
+            </div>
+            <div className="spotlight-container">
+                <div className="spotlight">
+                    <span>
+                        <Link to="/events">Fun things to do in the Queen City</Link>
+                    </span>
+                </div>
+                <div className="spotlight">
+                    <span>
+                        Just Opened in Charlotte - April 2025
+                    </span>
+                </div>
+                <div className="spotlight">
+                    <span>
+                        Top Concerts Coming to Charlotte This Winter
+                    </span>
+                </div>
+                <div className="spotlight">
+                    <span>
+                        Black-Owned Restaurants in Charlotte
+                    </span>
+                </div>
+            </div>
+            <p className="home-container-last-p">COMING UP IN THE QUEEN CITY</p>
         </div>
+        
+
     );
 };
 

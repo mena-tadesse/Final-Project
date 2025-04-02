@@ -9,9 +9,6 @@ const Events = () => {
         <div>
             <h1 className="event-header">Upcoming Events</h1>
             <p className="event-header">Charlottesgotalot.com is not the primary provider of tickets for any events listed.</p>
-            <br></br>
-            <br></br>
-            <br></br>
 
             <div className="container">
             <input type="text" name="search" placeholder='Search'/>

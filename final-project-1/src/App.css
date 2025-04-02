@@ -364,6 +364,7 @@ body, html {
 .event-header{
   text-align: center;
   font-weight: bold;
+  padding-bottom: 20px;
 }
 
 .category-filter{
@@ -555,3 +556,117 @@ body, html {
   cursor: pointer;
 }
 
+
+
+/***** HOME COMPONENT CSS *****/
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.home-background-image{
+  background: url('Image-Background/home_background_image.png') no-repeat center center;
+  position: relative;
+  width: 100vw;
+  height: 40vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-the-city {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 25vw;
+  height: 30vh;
+  margin-top: -20px;
+}
+
+.explore-the-city p {
+  color: white;
+  font-size: xx-large;
+  text-align: center;
+  font-weight: bold;
+}
+
+.explore-the-city button {
+  margin-bottom: 30px;
+  margin-top: -20px;
+  padding: 10px;
+  background-color:#1782B4;
+  border-color: white;
+  border-width: 3px;
+  border-radius: 7px;
+  color: white;
+}
+
+.spotlight-container {
+  width: 100vw;
+  height: 50vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+
+}
+
+.spotlight {
+  margin-top: -25px;
+  width: 250px;
+  height: 230px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.spotlight span {
+  font-size: 20px; 
+  font-weight: bold;
+  color: white;
+}
+
+.spotlight span a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.spotlight span a:visited {
+  color: inherit; 
+}
+
+.spotlight:first-of-type {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) ,url('Image-Background/spotlight_1_image.png') no-repeat center center;
+}
+
+.spotlight:nth-of-type(2) {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('Image-Background/spotlight_2_image.png') no-repeat center center;
+}
+
+.spotlight:nth-of-type(3) {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('Image-Background/spotlight_3_image.png') no-repeat center center;
+}
+
+.spotlight:nth-of-type(4) {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('Image-Background/spotlight_4_image.png') no-repeat center center;
+}
+
+.home-container-last-p {
+  display: block;
+  margin-top: -70px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: x-large;
+  font-weight: 600;
+}
