@@ -6,7 +6,7 @@ const Account = () => {
     return (
         <div className="account-home-container">
             <div className="account-navbar">
-                <h2>My Account</h2>
+            <h2>My Account</h2>
                 <nav>
                 <ul>
                     <li>
@@ -28,7 +28,7 @@ const Account = () => {
                 <div className="profile-card">
                     <div className="profile-image-container">
                         <img
-                        src={"https://via.placeholder.com/150"}
+                        src={"../Images/default_user_profile_picture.png"}
                         alt="Profile"
                         className="profile-image"
                         />
