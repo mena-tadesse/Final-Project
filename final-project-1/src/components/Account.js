@@ -15,7 +15,7 @@ const Account = () => {
                     </Link>
                     </li>
                     <li>
-                    <Link to="/account/bookmarks">Bookmarks</Link>
+                    <Link to="/bookmarks">Bookmarks</Link>
                     </li>
                 </ul>
                 </nav>
@@ -43,7 +43,7 @@ const Account = () => {
                     <div className="profile-details">
                     <p>Name: </p>
                     <p>Email: </p>
-                    <p>Password: ******** 
+                    <p>Password: 
                         <span>
                             <button className="show-password-button">👁️</button>
                         </span>
@@ -52,7 +52,7 @@ const Account = () => {
                     </div>
                 </div>
             </div>
-            <Outlet />
+            
         </div>
     )
 };

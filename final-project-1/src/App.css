@@ -351,9 +351,21 @@ body, html {
 /*Bookmarks container styling */
 .bookmarks-container {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #EAEAEA;
   height: 100vh;
   overflow-y: auto;
+  margin-left: 50px;
+  margin-top: 90px;
+  width: 50%;
+  height: 60vh;
+  border-radius: 15px;
+}
+
+.bookmarks-container h3{
+  margin-top: 0px;
+  margin-left: 10px;
+  font-size: x-large;
+  font-weight: semibold;
 }
 
 /* Box to hold all bookmarks */
@@ -362,10 +374,11 @@ body, html {
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #ddd;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Individual bookmark item styling */
@@ -379,7 +392,7 @@ body, html {
 .bookmark-item h2 {
   margin: 0 0 10px;
   font-size: 18px;
-  color: #333;
+  font-weight: semibold;
 }
 
 .bookmark-item p {

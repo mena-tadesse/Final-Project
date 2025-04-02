@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 
 const Bookmarks = () => {
     const bookmarks = [
@@ -8,9 +10,28 @@ const Bookmarks = () => {
     ];
 
     return (
-        <div className="bookmarks-container">
-            <h1>Bookmarks</h1>
-            <div className="bookmarks-box">
+        <div className="account-home-container">
+            <div className="account-navbar">
+            <h2>My Account</h2>
+                <nav>
+                <ul>
+                    <li>
+                    <Link to="/account" className="active">
+                        Profile
+                    </Link>
+                    </li>
+                    <li>
+                    <Link to="/bookmarks">Bookmarks</Link>
+                    </li>
+                </ul>
+                </nav>
+                <button className="delete-account-button">
+                Delete Account
+                </button>
+            </div>
+            <div className="bookmarks-container">
+                <h3>Bookmarks</h3>
+                <div className="bookmarks-box">
                 {bookmarks.map((bookmark) => (
                     <div key={bookmark.id} className="bookmark-item">
                         <h2>{bookmark.title}</h2>
@@ -18,7 +39,9 @@ const Bookmarks = () => {
                     </div>
                 ))}
             </div>
+        </div> 
         </div>
+        
     );
 };
 
