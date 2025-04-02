@@ -89,4 +89,4 @@ function Home() {
     );
 }
 
-export default Home;</article></div></section>
+export default Home;
