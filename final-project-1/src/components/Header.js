@@ -6,12 +6,26 @@ import { BsFillTicketPerforatedFill } from "react-icons/bs";
 import { MdOutlineLanguage } from "react-icons/md";
 import { FaRegCalendarDays } from "react-icons/fa6";
 import { TbLogin2 } from "react-icons/tb";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 const Header = () => {
 
     //gets current route
     const location = useLocation();
+    const navigte = useNavigate();
+    const { currentUser, logout } = useAuth();
+
+    //Handle logout
+    const handleLogout = async () => {
+        try {
+            await logout(); //calls logout function in AuthContext
+            navigte("/login");
+        } catch (error) {
+            console.error("Error logging out: ", error);
+        }
+    };
+
 
     return (
         <nav className="navbar">
@@ -45,9 +59,16 @@ const Header = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/login">
-                        <TbLogin2 className="icon"/><span>Login</span>
-                    </Link>
+                    {/*if currentUser isn't null, then change the icon to handle logout logic*/}
+                    { currentUser ? (
+                            <button>
+                                <TbLogin2 className="icon" onClick={handleLogout}/><span>Logout</span>
+                            </button>
+                        ) : (
+                            <Link to="/login">
+                                <TbLogin2 className="icon"/><span>Login</span>
+                            </Link>
+                        )}
                 </li>
             </ul>
         </nav>

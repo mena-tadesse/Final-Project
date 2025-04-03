@@ -37,6 +37,11 @@ body, html {
   color: #FEFEFE;
 }
 
+.navitems li button {
+  background-color: #1782B4;
+  border: none;
+}
+
 /*icons*/
 .icon {
   display: block;
