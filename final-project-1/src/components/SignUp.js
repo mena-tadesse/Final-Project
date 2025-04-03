@@ -114,6 +114,11 @@ const SignUp = () => {
                     </Link>
                 </div>
             </div>
+                 <div className="back-to-home-container">
+            <Link to="/">
+                <button className="back-to-home-button">Back to Home</button>
+            </Link>
+        </div>
         </div> 
     );
 };
