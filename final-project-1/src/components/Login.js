@@ -11,7 +11,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const { login, error } = useAuth();
+    const { login, error } = useAuth(); //this is the global state (that keeps track of the current user logged in / signed up) that was created in AuthContext.js.
     const navigate = useNavigate();
 
     const handleLogin = async (e) => { 
@@ -53,9 +53,9 @@ const Login = () => {
                         <form onSubmit={handleLogin}>
                         <p>LOGIN</p>
                         <label for="login_email">Email</label>
-                        <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com" onChange={handleEmailChange} required/>
+                        <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com" onChange={handleEmailChange} value={email} required/>
                         <label for="login_password">Password</label>
-                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" onChange={handlePasswordChange} required/>
+                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" onChange={handlePasswordChange} value={password} required/>
                         <button type="submit">LOGIN</button>
                         </form>
                         <div className="social-media">

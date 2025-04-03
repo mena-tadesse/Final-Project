@@ -14,7 +14,7 @@ const SignUp = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-          await signup(email, password);
+          await signup(email, password); //calls signup() function from AuthContext.js
           navigate("/account"); // Redirect to account after signup
         } catch {
           // Error is already handled in the context
@@ -44,9 +44,9 @@ const SignUp = () => {
                         <label for="last_name">Last Name</label>
                         <input id="last_name" className="authentication_info" type="text" placeholder="Doe" required/>
                         <label for="login_email">Email</label>
-                        <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com" onChange={handleEmailChange} required/>
+                        <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com" onChange={handleEmailChange} value={email} required/>
                         <label for="login_password">Password</label>
-                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" minlength="8" maxLength="12" onChange={handlePasswordChange} required/>
+                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" minlength="8" maxLength="12" value={password} onChange={handlePasswordChange} required/>
                         <button type="submit">SIGN UP</button>
                         </form>
                         <div className="social-media-signup">
