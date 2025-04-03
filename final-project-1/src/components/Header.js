@@ -20,7 +20,7 @@ const Header = () => {
     const handleLogout = async () => {
         try {
             await logout(); //calls logout function in AuthContext
-            navigte("/login");
+            navigte("/");
         } catch (error) {
             console.error("Error logging out: ", error);
         }
