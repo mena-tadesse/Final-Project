@@ -81,6 +81,7 @@ export const AuthProvider = ({ children }) => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       //we pass in the newly created user's info if successful
       dispatch({ type: "SIGNUP_SUCCESS", payload: userCredential.user });
+      return userCredential; //returns the userCredential object
     } catch (error) {
       //if there is an error, the user isn't created
       dispatch({ type: "AUTH_ERROR", payload: error.message });

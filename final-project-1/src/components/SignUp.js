@@ -4,10 +4,13 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { LanguageContext } from "../LanguageContext";
+import { updateProfile } from "firebase/auth"; 
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const { signup, error } = useAuth(); // Access signup function from AuthContext
     const { language } = useContext(LanguageContext); // Access the language context
     const navigate = useNavigate();
@@ -16,10 +19,14 @@ const SignUp = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await signup(email, password); // Calls signup() function from AuthContext.js
+            const fullName = `${firstName} ${lastName}`; // Combine first and last name
+            const userCredential = await signup(email, password); // Calls signup() function from AuthContext.js
+            await updateProfile(userCredential.user, {
+                displayName: fullName,
+            }); // Update the user's display name in Firebase
             navigate("/account"); // Redirect to account after signup
         } catch {
-            // Error is already handled in the context
+            console.error("Error during signup:", error);
         }
     };
 
@@ -32,6 +39,14 @@ const SignUp = () => {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
+
+    const handleFirstNameChange = (e) => {
+        setFirstName(e.target.value);
+    }
+
+    const handleLastNameChange = (e) => {
+        setLastName(e.target.value);
+    }
 
     return (
         <div className="login-background-container">
@@ -50,6 +65,8 @@ const SignUp = () => {
                             className="authentication_info" 
                             type="text" 
                             placeholder={language === "en" ? "John" : "Juan"} 
+                            value={firstName}
+                            onChange={handleFirstNameChange}
                             required 
                         />
                         <label htmlFor="last_name">{language === "en" ? "Last Name" : "Apellido"}</label>
@@ -58,6 +75,8 @@ const SignUp = () => {
                             className="authentication_info" 
                             type="text" 
                             placeholder={language === "en" ? "Doe" : "Pérez"} 
+                            value={lastName}
+                            onChange={handleLastNameChange}
                             required 
                         />
                         <label htmlFor="login_email">{language === "en" ? "Email" : "Correo Electrónico"}</label>

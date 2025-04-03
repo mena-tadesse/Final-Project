@@ -69,17 +69,26 @@ const Account = () => {
                         />
                     </div>
                     <div className="profile-details">
-                        <p>{language === "en" ? "Name:" : "Nombre:"}</p>
-                        <p>{language === "en" ? "Email:" : "Correo Electrónico:"}</p>
                         <p>
-                            {language === "en" ? "Password:" : "Contraseña:"}
+                            {language === "en" ? "Name: " : "Nombre: "}
+                            { currentUser?.displayName || " No name provided"}
+                        </p>
+                        <p>
+                            {language === "en" ? "Email: " : "Correo Electrónico: "}
+                            { currentUser?.email}
+                        </p>
+                        <p>
+                            {language === "en" ? "Password: " : "Contraseña: "}
                             <span>
+                                ********
                                 <button className="show-password-button">
-                                    {language === "en" ? "👁️ Show" : "👁️ Mostrar"}
+                                    {language === "en" ? "🔒" : "🔒 "}
                                 </button>
                             </span>
                         </p>
-                        <p>{language === "en" ? "Language:" : "Idioma:"}</p>
+                        <p>{language === "en" ? "Language: " : "Idioma: "}
+                           {language === "en" ? "English" : "Español"}
+                        </p>
                     </div>
                 </div>
             </div>
