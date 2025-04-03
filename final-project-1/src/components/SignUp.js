@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { auth } from '../config/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-
+import { LanguageContext } from "../LanguageContext";
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { signup, error } = useAuth();
+    const { signup, error } = useAuth(); // Access signup function from AuthContext
+    const { language } = useContext(LanguageContext); // Access the language context
     const navigate = useNavigate();
 
+    // Handle signup logic
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-          await signup(email, password); //calls signup() function from AuthContext.js
-          navigate("/account"); // Redirect to account after signup
+            await signup(email, password); // Calls signup() function from AuthContext.js
+            navigate("/account"); // Redirect to account after signup
         } catch {
-          // Error is already handled in the context
+            // Error is already handled in the context
         }
-      };
+    };
 
+    // Handle email input change
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
 
-
+    // Handle password input change
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
@@ -33,46 +36,86 @@ const SignUp = () => {
     return (
         <div className="login-background-container">
             <div className="login-container">
-                    <Link to="/">
-                        <img src="../Images/CharlotteIcon.png" alt="Home Button" />
-                    </Link>
-                    <div className="auth-details-alignment-signup">
-                        <form onSubmit={handleSignup}>
-                        <p>SIGN UP</p>
-                        <label for="first_name">First Name</label>
-                        <input id="first_name" className="authentication_info" type="text" placeholder="John" required/>
-                        <label for="last_name">Last Name</label>
-                        <input id="last_name" className="authentication_info" type="text" placeholder="Doe" required/>
-                        <label for="login_email">Email</label>
-                        <input id="login_email" className="authentication_info" type="email" placeholder="example@email.com" onChange={handleEmailChange} value={email} required/>
-                        <label for="login_password">Password</label>
-                        <input id="login_password" className="authentication_info" type="password" placeholder="abc123" minlength="8" maxLength="12" value={password} onChange={handlePasswordChange} required/>
-                        <button type="submit">SIGN UP</button>
-                        </form>
-                        <div className="social-media-signup">
-                            <a href="https://twitter.com/charlottgotalot" target="_blank"><img src="../Images/twittericon.png" alt="twitter icon" className="twitter"/></a>
-                            <a href="https://www.facebook.com/charlottesgotalot/" target="_blank"><img src="../Images/facebook.png" alt="facebook icon" className="facebook" /></a>
-                            <a href="https://www.instagram.com/charlottesgotalot/" target="_blank"><img src="../Images/instagram_icon.png" alt="instagram icon" className="instagram"  /></a>
-                        </div>
+                {/* Home button */}
+                <Link to="/">
+                    <img src="../Images/CharlotteIcon.png" alt="Home Button" />
+                </Link>
+                <div className="auth-details-alignment-signup">
+                    {/* Signup form */}
+                    <form onSubmit={handleSignup}>
+                        <p>{language === "en" ? "SIGN UP" : "REGÍSTRATE"}</p>
+                        <label htmlFor="first_name">{language === "en" ? "First Name" : "Nombre"}</label>
+                        <input 
+                            id="first_name" 
+                            className="authentication_info" 
+                            type="text" 
+                            placeholder={language === "en" ? "John" : "Juan"} 
+                            required 
+                        />
+                        <label htmlFor="last_name">{language === "en" ? "Last Name" : "Apellido"}</label>
+                        <input 
+                            id="last_name" 
+                            className="authentication_info" 
+                            type="text" 
+                            placeholder={language === "en" ? "Doe" : "Pérez"} 
+                            required 
+                        />
+                        <label htmlFor="login_email">{language === "en" ? "Email" : "Correo Electrónico"}</label>
+                        <input 
+                            id="login_email" 
+                            className="authentication_info" 
+                            type="email" 
+                            placeholder={language === "en" ? "example@email.com" : "ejemplo@correo.com"} 
+                            onChange={handleEmailChange} 
+                            value={email} 
+                            required 
+                        />
+                        <label htmlFor="login_password">{language === "en" ? "Password" : "Contraseña"}</label>
+                        <input 
+                            id="login_password" 
+                            className="authentication_info" 
+                            type="password" 
+                            placeholder={language === "en" ? "abc123" : "abc123"} 
+                            minLength="8" 
+                            maxLength="12" 
+                            value={password} 
+                            onChange={handlePasswordChange} 
+                            required 
+                        />
+                        <button type="submit">{language === "en" ? "SIGN UP" : "REGÍSTRATE"}</button>
+                    </form>
+                    {/* Social media links */}
+                    <div className="social-media-signup">
+                        <a href="https://twitter.com/charlottgotalot" target="_blank" rel="noopener noreferrer">
+                            <img src="../Images/twittericon.png" alt="twitter icon" className="twitter" />
+                        </a>
+                        <a href="https://www.facebook.com/charlottesgotalot/" target="_blank" rel="noopener noreferrer">
+                            <img src="../Images/facebook.png" alt="facebook icon" className="facebook" />
+                        </a>
+                        <a href="https://www.instagram.com/charlottesgotalot/" target="_blank" rel="noopener noreferrer">
+                            <img src="../Images/instagram_icon.png" alt="instagram icon" className="instagram" />
+                        </a>
                     </div>
+                </div>
             </div>
+            {/* Login path section */}
             <div className="login-path-container">
                 <div className="login-path-content-container">
-                    <p>HELLO FRIEND!</p>
+                    <p>{language === "en" ? "HELLO FRIEND!" : "¡HOLA AMIGO!"}</p>
                     <p>
-                    “The first documented discovery of gold in the US was in Charlotte in 1799”
-                        <span>
-                            ~Queen City
-                        </span>
+                        {language === "en" 
+                            ? "“The first documented discovery of gold in the US was in Charlotte in 1799”" 
+                            : "“El primer descubrimiento documentado de oro en los EE.UU. fue en Charlotte en 1799”"}
+                        <span>~Queen City</span>
                     </p>
-                    <p>Already have an account?</p>
+                    <p>{language === "en" ? "Already have an account?" : "¿Ya tienes una cuenta?"}</p>
                     <Link to="/login">
-                        <button>LOGIN</button>
+                        <button>{language === "en" ? "LOGIN" : "INICIAR SESIÓN"}</button>
                     </Link>
                 </div>
             </div>
         </div> 
-    )
+    );
 };
 
 export default SignUp;

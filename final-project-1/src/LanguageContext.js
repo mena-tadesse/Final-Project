@@ -3,26 +3,29 @@ import React, { createContext, useState, useEffect } from "react";
 export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState("en");
+    const [language, setLanguage] = useState("en"); // Default language is English
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem("language");
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
+    // Load language preference from localStorage on initialization
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("language");
+        if (savedLanguage) {
+            setLanguage(savedLanguage);
+        }
+    }, []);
 
-  useEffect(() => {
-    localStorage.setItem("language", language);
-  }, [language]);
+    // Save language preference to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem("language", language);
+    }, [language]);
 
-  const toggleLanguage = () => {
-    setLanguage((prevLanguage) => (prevLanguage === "en" ? "es" : "en"));
-  };
+    // Toggle language between English and Spanish
+    const toggleLanguage = () => {
+        setLanguage((prevLanguage) => (prevLanguage === "en" ? "es" : "en"));
+    };
 
-  return (
-    <LanguageContext.Provider value={{ language, toggleLanguage }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+    return (
+        <LanguageContext.Provider value={{ language, toggleLanguage }}>
+            {children}
+        </LanguageContext.Provider>
+    );
 };

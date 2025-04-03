@@ -675,3 +675,13 @@ body, html {
   font-size: x-large;
   font-weight: 600;
 }
+
+.full-calendar-container {
+  width: 100%; /* Ensure the calendar takes the full width */
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow: auto; /* Allow scrolling if necessary */
+}
+
+.fc {
+  box-sizing: border-box; /* Ensure proper box model for FullCalendar */
+}
