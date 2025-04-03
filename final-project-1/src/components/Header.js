@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {IoInvertModeOutline} from "react-icons/io5";
 import {IoInvertMode} from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
@@ -8,19 +8,22 @@ import { FaRegCalendarDays } from "react-icons/fa6";
 import { TbLogin2 } from "react-icons/tb";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
+import {LanguageContext} from "../LanguageContext";
 
 const Header = () => {
 
     //gets current route
     const location = useLocation();
-    const navigte = useNavigate();
+    const navigate = useNavigate();
     const { currentUser, logout } = useAuth();
+    const { language, toggleLanguage } = useContext(LanguageContext); 
+
 
     //Handle logout
     const handleLogout = async () => {
         try {
             await logout(); //calls logout function in AuthContext
-            navigte("/");
+            navigate("/");
         } catch (error) {
             console.error("Error logging out: ", error);
         }
@@ -51,7 +54,12 @@ const Header = () => {
                         <img src="../Images/CharlotteIcon.png" alt="HomeButton"/>
                     </Link>
                 </li>
-                <li><MdOutlineLanguage className="icon"/><span>Español</span></li>
+                <li>
+                    <button onClick={toggleLanguage} className="language-button">
+                        <MdOutlineLanguage className="icon" />
+                        <span>{language === "en" ? "Español" : "English"}</span>
+                    </button>
+                </li>
                 <li>
                     {/*linking icon to calendar route. if the current route is equal to calendar, then the className is set to active*/}
                     <Link to="/calendar" className={location.pathname === "/calendar" ? "active" : ""}>
