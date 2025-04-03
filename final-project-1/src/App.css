@@ -685,3 +685,25 @@ body, html {
 .fc {
   box-sizing: border-box; /* Ensure proper box model for FullCalendar */
 }
+
+.back-to-home-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-to-home-button {
+  background-color: #1782B4; /* Blue background */
+  color:black; /* Black text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 600px;
+  font-size: 16px;
+  
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
