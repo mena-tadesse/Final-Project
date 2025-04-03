@@ -1,8 +1,30 @@
-import React from 'react';
-import { Link, Outlet } from "react-router-dom";
+import React, { use } from 'react';
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+
 
 
 const Account = () => {
+    const {currentUser, deleteAccount, error} = useAuth();
+    const navigate = useNavigate();
+
+    const handleDeleteAccount = async (e) => {
+        e.preventDefault();
+        const confirmDelete = window.confirm(
+            "Are you sure you want to delete your account? This action cannot be undone."
+        );
+
+        //if confirmDelete is true...
+        if(confirmDelete){
+            try {
+                await deleteAccount(currentUser); //calls deleteAccount() function from AuthContext.js & passes in currentUserInfo
+                navigate("/"); // Redirect to home after deletion
+            } catch (error) {
+                console.error("Error deleting account:", error);
+            }
+        } 
+      };
+
     return (
         <div className="account-home-container">
             <div className="account-navbar">
@@ -19,7 +41,7 @@ const Account = () => {
                     </li>
                 </ul>
                 </nav>
-                <button className="delete-account-button">
+                <button className="delete-account-button" onClick={handleDeleteAccount}>
                 Delete Account
                 </button>
             </div>

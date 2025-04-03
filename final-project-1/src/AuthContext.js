@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword, //creates new user
   signInWithEmailAndPassword, //logs users in
   signOut, //logs out
+  deleteUser, //deletes user
 } from "firebase/auth";
 
 // Initial state
@@ -108,6 +109,17 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: "LOGOUT" });
   };
 
+  //Delete user function
+  const deleteAccount = async (user) => { //we pass in the user details
+    try{
+      await deleteUser(user); //delete the user from firebase
+    } catch (error) {
+      console.error("Error deleting user: ", error);
+      throw error;
+    }
+    
+  }
+
   // Context value to share
   const value = {
     currentUser: state.currentUser,
@@ -116,6 +128,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     login,
     logout,
+    deleteAccount,
   };
 
   return <AuthContext.Provider value={value}>{!state.loading && children}</AuthContext.Provider>;
