@@ -57,7 +57,7 @@ const Login = () => {
             <div className="login-container">
                 {/* Home button */}
                 <Link to="/">
-                    <img src="../Images/CharlotteIcon.png" alt="Home Button" />
+                    <img src="../Images/CharlotteIcon.png" alt="Home Button" className="charlotte-home-icon-on-authentication"/>
                 </Link>
                 <div className="auth-details-alignment">
                     {/* Login form */}
@@ -117,11 +117,7 @@ const Login = () => {
                     </Link>
                 </div>
             </div>
-                 <div className="back-to-home-container">
-            <Link to="/">
-                <button className="back-to-home-button">Back to Home</button>
-            </Link>
-        </div>
+                 
         </div> 
     );
 };

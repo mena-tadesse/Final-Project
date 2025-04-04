@@ -35,7 +35,7 @@ const Header = () => {
                 </li>
                 <li>
                     {/* Linking icon to account route. If the current route is equal to account, then the className is set to active */}
-                    <Link to="/account" className={location.pathname === "/account" ? "active" : ""}>
+                    <Link to="/account" className={location.pathname === "/account" || location.pathname === "/bookmarks" ? "active" : ""}>
                         <VscAccount className="icon" />
                         <span>{language === "en" ? "Account" : "Cuenta"}</span>
                     </Link>

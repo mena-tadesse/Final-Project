@@ -20,13 +20,26 @@ const SignUp = () => {
         e.preventDefault();
         try {
             const fullName = `${firstName} ${lastName}`; // Combine first and last name
+            
             const userCredential = await signup(email, password); // Calls signup() function from AuthContext.js
+            
             await updateProfile(userCredential.user, {
+                //assign the user's display name in firebase
+                //to their full name
                 displayName: fullName,
-            }); // Update the user's display name in Firebase
-            navigate("/account"); // Redirect to account after signup
+            });
+
+            //manually reloads the user thats currently logged in
+            //this is to ensure that the user info is updated in the auth context
+            await auth.currentUser.reload();
+
+            // we are using this instead of navigate("/account") because
+            // the onAuthStateChanged listener is asynchronous, and doesnt
+            //immediately detect the new user after sign up. causing the route to not go to account
+            window.location.href = "/account";
         } catch {
             console.error("Error during signup:", error);
+            alert(language === "en" ? "Signup failed. Please try again." : "El registro falló. Por favor, inténtelo de nuevo.");
         }
     };
 
@@ -53,7 +66,7 @@ const SignUp = () => {
             <div className="login-container">
                 {/* Home button */}
                 <Link to="/">
-                    <img src="../Images/CharlotteIcon.png" alt="Home Button" />
+                    <img src="../Images/CharlotteIcon.png" alt="Home Button" className="charlotte-home-icon-on-authentication"/>
                 </Link>
                 <div className="auth-details-alignment-signup">
                     {/* Signup form */}
@@ -133,11 +146,6 @@ const SignUp = () => {
                     </Link>
                 </div>
             </div>
-                 <div className="back-to-home-container">
-            <Link to="/">
-                <button className="back-to-home-button">Back to Home</button>
-            </Link>
-        </div>
         </div> 
     );
 };

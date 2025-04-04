@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from "react";
+import React, { createContext, useContext, useReducer, useEffect, useState } from "react";
 import { auth } from "./config/config"; // Firebase auth instance
 import {
   onAuthStateChanged, //checks if someone is logged in
@@ -85,6 +85,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       //if there is an error, the user isn't created
       dispatch({ type: "AUTH_ERROR", payload: error.message });
+      throw error;
     }
   };
 

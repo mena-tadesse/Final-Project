@@ -83,12 +83,19 @@ body, html {
   align-items: center;
 }
 
+/*charlotte icon on authentication pages*/
+.charlotte-home-icon-on-authentication {
+  border: 5px double #1782B4;
+  border-radius: 20px;
+  padding: 2px;
+}
+
 /*container for login details*/
 .login-container{
   display: flex;
   flex-direction: column;
   width: 70vw;
-  height: 92vh;
+  height: 95vh;
   top: 50%;
   margin: 30px 10px 30px;
   background: rgba(255, 255, 255, 0.8);
@@ -107,6 +114,7 @@ body, html {
 .login-container img:hover {
   opacity: 1;
 }
+
 
 /*div for the form the user must fill out to login*/
 .auth-details-alignment form{
@@ -684,26 +692,4 @@ body, html {
 
 .fc {
   box-sizing: border-box; /* Ensure proper box model for FullCalendar */
-}
-
-.back-to-home-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.back-to-home-button {
-  background-color: #1782B4; /* Blue background */
-  color:black; /* Black text */
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  margin-bottom: 600px;
-  font-size: 16px;
-  
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.back-to-home-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
 }

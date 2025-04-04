@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { LanguageContext } from "../LanguageContext"; // Import LanguageContext
 
+
 const Account = () => {
     const { currentUser, deleteAccount, error } = useAuth();
     const { language } = useContext(LanguageContext); // Access the language context

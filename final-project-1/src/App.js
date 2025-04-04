@@ -11,6 +11,7 @@ import Bookmarks from './components/Bookmarks';
 import Login from './components/Login';
 import SignUp from './components/SignUp'
 import {useLocation} from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 
 //AppConent() is responsible for rendering the header and routes based on the current location
 function AppContent() {
@@ -33,10 +34,10 @@ function AppContent() {
           {/*Event Detail is nested in Events*/}
             <Route path="eventdetail" element={<EventDetail />} />
           </Route>
-          <Route path="/account" element={<Account />} /> 
-            {/*Bookmarks is nested in Account*/}
+          {/*Protected Route is used to prevent users from accessing account & Calendar if they aren't logged in*/}
+          <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} /> 
           <Route path="bookmarks" element={<Bookmarks />} />
-          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
         </Routes>
     </div>
   );
