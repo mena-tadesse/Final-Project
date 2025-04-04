@@ -71,7 +71,7 @@ const Account = () => {
                     <div className="profile-details">
                         <p>
                             {language === "en" ? "Name: " : "Nombre: "}
-                            { currentUser?.displayName || " No name provided"}
+                            {currentUser?.displayName || " "}
                         </p>
                         <p>
                             {language === "en" ? "Email: " : "Correo Electrónico: "}
