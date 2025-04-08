@@ -5,7 +5,7 @@ const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
 
 export const fetchEvents = async (language) => {
     try {
-        const locale = language === "en" ? "en-us" : "es-es"; // Set locale based on language
+        const locale = "en";
         const response = await axios.get(BASE_URL, {
             params: {
                 apikey: API_KEY,
