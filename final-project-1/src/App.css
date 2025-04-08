@@ -7,6 +7,12 @@ body, html {
   overflow: hidden;
 }
 
+body.dark-mode {
+ background-color: rgb(10, 9, 9);
+ color: white;
+
+}
+
 /*****HEADER COMPONENT CSS*****/
 .navbar {
   background-color: #1782B4;
@@ -14,6 +20,10 @@ body, html {
   padding: 10px;
 }
 
+body.dark-mode .navbar {
+ background-color: #1e1e1e;
+
+}
 /*spaces navbar evenly and gets rid of bullet points*/
 .navbar ul{
   display: flex;
