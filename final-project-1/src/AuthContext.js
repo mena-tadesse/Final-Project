@@ -7,7 +7,7 @@ import {
   signOut, //logs out
   deleteUser, //deletes user
 } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore"; // Firestore functions
+import { doc, getDoc, deleteDoc } from "firebase/firestore"; // Firestore functions
 
 // Initial state
 const initialState = {
@@ -134,6 +134,8 @@ export const AuthProvider = ({ children }) => {
   //Delete user function
   const deleteAccount = async (user) => { //we pass in the user details
     try{
+      const userRef = doc(firestore, "users", user.uid);
+      await deleteDoc(userRef);
       await deleteUser(user); //delete the user from firebase
     } catch (error) {
       console.error("Error deleting user: ", error);
