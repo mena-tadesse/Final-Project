@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { use,useEffect,useContext } from 'react';
 import { IoInvertModeOutline } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
 import { BsFillTicketPerforatedFill } from "react-icons/bs";
@@ -15,7 +15,20 @@ const Header = () => {
     const navigate = useNavigate();
     const { currentUser, logout } = useAuth();
     const { language, toggleLanguage } = useContext(LanguageContext);
+    const [darkMode, setDarkMode] = React.useState(false);
 
+    const toggleDarkMode = () => {
+     setDarkMode(!darkMode);
+     };
+        
+     useEffect(() => {
+      if (darkMode) {
+        document.body.classList.add("dark-mode");
+      } else{
+        document.body.classList.remove("dark-mode");
+      }
+
+     },    [darkMode]);
     // Handle logout
     const handleLogout = async () => {
         try {
@@ -28,10 +41,12 @@ const Header = () => {
 
     return (
         <nav className="navbar">
-            <ul className="navitems">
+            <ul className="navitems"> 
                 <li>
+                    <button onClick={toggleDarkMode} className='dark-mode-b'>
                     <IoInvertModeOutline className="icon" />
                     <span>{language === "en" ? "Dark Mode" : "Modo Oscuro"}</span>
+                    </button>
                 </li>
                 <li>
                     {/* Linking icon to account route. If the current route is equal to account, then the className is set to active */}
@@ -86,3 +101,6 @@ const Header = () => {
 };
 
 export default Header;
+          
+             
+                         
