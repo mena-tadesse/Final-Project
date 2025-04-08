@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect, useState } from "react";
-import { auth } from "./config/config"; // Firebase auth instance
+import { auth, firestore } from "./config/config"; // Firebase auth instance
 import {
   onAuthStateChanged, //checks if someone is logged in
   createUserWithEmailAndPassword, //creates new user
@@ -7,6 +7,7 @@ import {
   signOut, //logs out
   deleteUser, //deletes user
 } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore"; // Firestore functions
 
 // Initial state
 const initialState = {
@@ -58,9 +59,28 @@ export const AuthProvider = ({ children }) => {
     //auth was imported from firebase. auth is a firebase
     //instance, which is basically the connection between
     //the app and the firebase login system
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        dispatch({ type: "LOGIN_SUCCESS", payload: user });
+        try {
+          // Fetch user data from Firestore
+          const userRef = doc(firestore, "users", user.uid);
+          const userDoc = await getDoc(userRef);
+
+          if (userDoc.exists()) {
+              const userData = userDoc.data();
+              // Merge Firestore data with the user object
+              const updatedUser = {
+                  ...user,
+                  photoURL: userData.profile?.photoURL || null,
+              };
+              dispatch({ type: "LOGIN_SUCCESS", payload: updatedUser });
+          } else {
+              dispatch({ type: "LOGIN_SUCCESS", payload: user });
+          }
+      } catch (error) {
+          console.error("Error fetching user data from Firestore:", error);
+          dispatch({ type: "LOGIN_SUCCESS", payload: user });
+      }
       } else {
         dispatch({ type: "LOGOUT" });
       }
