@@ -1,23 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react'; 
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { LanguageContext } from "../LanguageContext"; // Import LanguageContext
-import esLocale from '@fullcalendar/core/locales/es'; // Import Spanish locale
-import enLocale from '@fullcalendar/core/locales/en-gb'; // Import English locale
+import { useNavigate } from "react-router-dom"; 
+import { LanguageContext } from "../LanguageContext"; 
+import esLocale from '@fullcalendar/core/locales/es'; 
+import enLocale from '@fullcalendar/core/locales/en-gb'; 
+import { fetchEvents } from "../utils/fetchEvents"; 
 
 const Calendar = () => {
-    const { language } = useContext(LanguageContext); // Access the language context
+    const { language } = useContext(LanguageContext);
+    const [events, setEvents] = useState([]); 
+    const navigate = useNavigate(); 
+
+    useEffect(() => {
+        const loadEvents = async () => {
+            const fetchedEvents = await fetchEvents(language);
+            const calendarEvents = fetchedEvents.map((event) => ({
+                id: event.id, 
+                title: event.name, 
+                date: event.date, 
+            }));
+            setEvents(calendarEvents); 
+        };
+        loadEvents();
+    }, [language]); 
+    const handleEventClick = (info) => {
+        const eventId = info.event.id;
+        navigate(`/eventdetail/${eventId}`); 
+    };
 
     return (
         <div className="full-calendar-container">
             <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView="dayGridMonth"
-                locale={language === "en" ? enLocale : esLocale} // Dynamically set the locale
-                events={[
-                    { title: language === "en" ? 'Event 1' : 'Evento 1', date: '2025-04-01' },
-                    { title: language === "en" ? 'Event 2' : 'Evento 2', date: '2025-04-15' },
-                ]}
+                locale={language === "en" ? enLocale : esLocale}
+                events={events} 
+                eventClick={handleEventClick} 
             />
         </div>
     );
