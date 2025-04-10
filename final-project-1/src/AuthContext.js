@@ -65,17 +65,17 @@ export const AuthProvider = ({ children }) => {
         try {
           // Fetch user data from Firestore
           const userRef = doc(firestore, "users", user.uid);
-          const userDoc = await getDoc(userRef);
+          const userDoc = await getDoc(userRef); //gets document for the signed in user
 
           if (userDoc.exists()) {
-              const userData = userDoc.data();
-              // Merge Firestore data with the user object
+              const userData = userDoc.data(); //gets data from user's doc
+              // Merges the user's firestore data with the user object from authentication
               const updatedUser = {
                   ...user,
                   photoURL: userData.profile?.photoURL || null,
-              };
+              }; //adds the url to their document if it exists.
               dispatch({ type: "LOGIN_SUCCESS", payload: updatedUser });
-          } else {
+          } else { //if the user's document (which holds their pfp url) doesn't exist in firestore, but they still have a valid account, they should still be able to login 
               dispatch({ type: "LOGIN_SUCCESS", payload: user });
           }
       } catch (error) {

@@ -22,36 +22,26 @@ const Account = () => {
 
     //Handle image upload 
     const handleImageUpload = async (e) => {
-        const file = e.target.files[0]; // Get the selected file
+        const file = e.target.files[0]; // Gets the file uploaded by the user
         if (!file) return; // If no file is selected, return
         setUploading(true); // Set uploading state to true
 
         try {
             // Step 1: Upload the file to Firebase Storage
-            console.log("Current User UID:", currentUser?.uid);
-            console.log("Current User UID:", currentUser?.displayName);
-            console.log("Uploading file to Firebase Storage...")
+            // Create a storage reference for the file & the path where it will be stored
             const storageRef = ref(storage, `profilePictures/${currentUser.uid}/profile.jpg`);
-            await uploadBytes(storageRef, file);
-            console.log("File uploaded to storage successfully");
+            await uploadBytes(storageRef, file); //uploads file to Firebase Storage in the path we specified above
 
-            // Step 2: Get the download URL
-            console.log("Getting download URL...");
+            // Step 2: Get the URL of the file stored in Firebase Storage
             const downloadURL = await getDownloadURL(storageRef);
-            console.log("Download URL: ", downloadURL);
-            console.log("Current user object:", currentUser);
 
 
             // Step 3: Save the URL in Firestore
-            console.log("Updating Firestore with photoURL...");
-            const userRef = doc(firestore, "users", currentUser.uid);
-            const data = { profile: { photoURL: downloadURL } };
-            console.log("Data being sent to Firestore:", data);
-            await setDoc(userRef, data, { merge: true });
-            console.log("Firestore updated successfully");
-            
+            const userRef = doc(firestore, "users", currentUser.uid); //creates referene to document in firestore with the collection named "users" and the path being the current user's uid
+            const data = { profile: { photoURL: downloadURL } }; //creates data inside of the document. the data has an object called profile. inside of profile, there is a field named photoURL, which stores the profile picture URL
+            await setDoc(userRef, data, { merge: true }); //updates the document with the data we created above. merge: true means that it will only update the fields that are specified in the data object, and it won't overwrite the entire document.
             alert(language === "en" ? "Profile picture updated successfully!" : "¡Foto de perfil actualizada con éxito!");
-            setPhotoURL(downloadURL); // Update the photoURL in the state
+            setPhotoURL(downloadURL); // Update the photoURL state in the react component.
         } catch (error) {
             console.error("Error uploading image:", error);
             alert(language === "en" ? "Failed to upload image. Please try again." : "Error al subir la imagen. Por favor, inténtelo de nuevo.");
