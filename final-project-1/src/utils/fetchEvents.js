@@ -19,8 +19,8 @@ export const fetchEvents = async (language) => {
         return events.map((event) => ({
             id: event.id,
             name: event.name,
-            date: event.dates?.start?.localDate,
-        }));
+            start: event.dates?.start?.localDate,
+            end: event.dates?.end?.localDate || event.dates?.start?.localDate,        }));
     } catch (error) {
         console.error("Error fetching events:", error);
         return [];

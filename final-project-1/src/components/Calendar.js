@@ -18,7 +18,8 @@ const Calendar = () => {
             const calendarEvents = fetchedEvents.map((event) => ({
                 id: event.id, 
                 title: event.name, 
-                date: event.date, 
+                start: event.start,
+                end: event.end,
             }));
             setEvents(calendarEvents); 
         };
