@@ -30,10 +30,9 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/events" element={<Events />} >
+          <Route path="/events" element={<Events />} />
           {/*Event Detail is nested in Events*/}
-            <Route path="eventdetail" element={<EventDetail />} />
-          </Route>
+            <Route path="/events/:id" element={<EventDetail />} />
           {/*Protected Route is used to prevent users from accessing account & Calendar if they aren't logged in*/}
           <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} /> 
           <Route path="bookmarks" element={<Bookmarks />} />
