@@ -8,6 +8,7 @@ import {
   deleteUser, //deletes user
 } from "firebase/auth";
 import { doc, getDoc, deleteDoc } from "firebase/firestore"; // Firestore functions
+import { deleteObject, getStorage, ref } from "firebase/storage";
 
 // Initial state
 const initialState = {
@@ -134,9 +135,18 @@ export const AuthProvider = ({ children }) => {
   //Delete user function
   const deleteAccount = async (user) => { //we pass in the user details
     try{
-      const userRef = doc(firestore, "users", user.uid);
+
+      //when we delete the user, we must also delete their profile picture from storage
+      const storage = getStorage(); //initialize storage reference
+      const profilePictureRef = ref(storage, `profilePictures/${user.uid}/profile.jpg`); //get reference to user's profile picture
+      await deleteObject(profilePictureRef); //delete the profile picture from storage
+
+      //when we delete the user we must also delete the user's data from database
+      const userRef = doc(firestore, "users", user.uid); //get the user reference from firestore
       await deleteDoc(userRef);
-      await deleteUser(user); //delete the user from firebase
+
+      //delete the user's instance from firebase authentication
+      await deleteUser(user);
     } catch (error) {
       console.error("Error deleting user: ", error);
       throw error;

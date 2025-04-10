@@ -562,6 +562,8 @@ body.dark-mode .navbar {
 .profile-image {
   object-fit: contain;
   width: 150px;
+  margin-bottom: 10px;
+  border-radius: 50px;
 }
 
 .profile-details {
