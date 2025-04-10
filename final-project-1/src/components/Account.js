@@ -4,7 +4,7 @@ import { useAuth } from "../AuthContext";
 import { LanguageContext } from "../LanguageContext"; // Import LanguageContext
 import { storage, firestore } from "../config/config"; // Import storage and firestore from config
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import necessary functions from Firebase Storage
-import { doc, updateDoc, setDoc, collection, getDocs } from "firebase/firestore"; // Firestore functions
+import { doc, updateDoc, setDoc, collection, getDoc } from "firebase/firestore"; // Firestore functions
 
 const Account = () => {
     const { currentUser, deleteAccount, error } = useAuth();
@@ -15,9 +15,21 @@ const Account = () => {
 
     // Update photoURL state whenever currentUser changes
     useEffect(() => {
-        if (currentUser?.photoURL) {
-            setPhotoURL(currentUser.photoURL);
-        }
+        const fetchProfilePicture = async () => {
+            if (currentUser) {
+                try {
+                    const userRef = doc(firestore, "users", currentUser.uid); // Reference to the user's Firestore document
+                    const userDoc = await getDoc(userRef); // Fetch the document
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        setPhotoURL(userData.profile?.photoURL || "../Images/default_user_profile_picture.png"); // Update the photoURL state
+                    }
+                } catch (error) {
+                    console.error("Error fetching profile picture:", error);
+                }
+            }
+        };
+        fetchProfilePicture(); // Call the function to fetch the profile picture
     }, [currentUser]);
 
     //Handle image upload 
