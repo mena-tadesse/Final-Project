@@ -27,7 +27,7 @@ const Calendar = () => {
     }, [language]); 
     const handleEventClick = (info) => {
         const eventId = info.event.id;
-        navigate(`/eventdetail/${eventId}`); 
+        navigate(`/events/${eventId}`); 
     };
 
     return (

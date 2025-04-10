@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LanguageContext } from "../LanguageContext";
+import { fetchEvents } from '../utils/fetchEvents';
 
 const Events = () => {
     const [category, setCategory] = useState('');
@@ -13,28 +14,16 @@ const Events = () => {
     const [bookmarkedEvents, setBookmarkedEvents] = useState([]);
     const { language } = useContext(LanguageContext);
 
-    const API_Key = "gXhBcSySDgDb11q1Ex4uazo5CZhTo8tx";
-
-    const fetchEvents = async (category = '') => {
-        
-            let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${API_Key}&size=30&city=Charlotte`;
-
-            if (category) {
-                url += `&classificationName=${encodeURIComponent(category)}`;
-              }
-        const res  = await fetch(url);
-        const data = await res.json();
-        return data._embedded?.events || [];
-    };
 
     useEffect(() => {
         const loadEvents = async () => {
-            const data = await fetchEvents(category);
+            const data = await fetchEvents(language);
             setEvents(data);
             setFilteredEvents(data);
         };
         loadEvents();
-    }, [category]);
+    }, [category, language]); 
+
 
     useEffect(() => {
         const filtered = events.filter((event) => {
