@@ -5,6 +5,7 @@ import { fetchEvents } from '../utils/fetchEvents';
 import { useAuth } from "../AuthContext";
 import { firestore } from "../config/config";
 import { doc, collection, getDocs, setDoc, deleteDoc} from "firebase/firestore";
+import { FaRegBookmark } from "react-icons/fa";
 
 const Events = () => {
     const [category, setCategory] = useState('');
@@ -213,7 +214,7 @@ const Events = () => {
                     <span className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
                                         onClick={() => toggleBookmark(event)}
                     >
-                        ★
+                        <FaRegBookmark />
                     </span>
                     <img src={event.images?.[0]?.url} alt={event.name} />
                         <h3>{event.name}</h3>

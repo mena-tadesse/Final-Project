@@ -442,19 +442,45 @@ body.dark-mode .navbar {
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  background-color: #ddd;
-  border: 1px solid #ddd;
+  background-color: #EAEAEA;
+  /*border: 1px solid #ddd;*/
+  border: none;
   border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
 
 }
 
 /* Individual bookmark item styling */
 .bookmark-item {
+  display: flex;
   padding: 15px;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #dedede;
   border-radius: 8px;
-  background-color: #f4f4f4;
+  background-color: #EAEAEA;
+}
+
+.bookmark-item-images{
+  display: flex;
+  margin-right: 20px;
+}
+
+.bookmark-item-images button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #FFBB00;
+  font-size: 20px;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+}
+
+.bookmark-item-images img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  border: 1px solid #ffffff;
 }
 
 .bookmark-item h2 {
@@ -466,7 +492,7 @@ body.dark-mode .navbar {
 .bookmark-item p {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: #000000;
 }
 
 /*****ACCOUNT COMPONENT CSS*****/
@@ -765,4 +791,61 @@ body.dark-mode .navbar {
 
 .bookmark-icon.bookmarked {
   color: gold;
+}
+
+.event-detail-container { 
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 1000px;
+  color: #222;
+}
+
+.event-left {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.event-right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.event-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+}
+
+.event-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 16px;
+  background-color: #0078d4;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.event-link:hover {
+  background-color: #005ea6;
 }

@@ -91,7 +91,7 @@ const Account = () => {
                     <ul>
                         <li>
                             <Link to="/account" className="active">
-                                {language === "en" ? "Profile" : "Perfil"}
+                                <u>{language === "en" ? "Profile" : "Perfil"}</u>
                             </Link>
                         </li>
                         <li>
