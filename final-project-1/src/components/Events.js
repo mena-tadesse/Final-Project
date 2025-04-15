@@ -2,6 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LanguageContext } from "../LanguageContext";
 import { fetchEvents } from '../utils/fetchEvents';
+import { useAuth } from "../AuthContext";
+import { firestore } from "../config/config";
+import { doc, collection, getDocs, setDoc, deleteDoc} from "firebase/firestore";
 
 const Events = () => {
     const [category, setCategory] = useState('');
@@ -13,6 +16,7 @@ const Events = () => {
     const [endDate, setEndDate] = useState('');
     const [bookmarkedEvents, setBookmarkedEvents] = useState([]);
     const { language } = useContext(LanguageContext);
+    const { currentUser } = useAuth(); //access the current user
 
 
     useEffect(() => {
@@ -23,6 +27,24 @@ const Events = () => {
         };
         loadEvents();
     }, [category, language]); 
+
+    //fetch bookmarked events from firestore
+    useEffect(() => {
+        const fetchBookmarks = async () => {
+            //if currentUser is logged in
+            if (currentUser) {
+                //create reference to the user's bookmarks collection
+                const bookmarksRef = collection(firestore, "users", currentUser.uid, "bookmarks");
+                //fetch all the documents in the bookmarks collection
+                const snapshot = await getDocs(bookmarksRef);
+                //map through the documents and get the ids of the bookmarks
+                const bookmarks = snapshot.docs.map((doc) => doc.id);
+                //update the state with the bookmarked event IDS
+                setBookmarkedEvents(bookmarks);
+            }
+        };
+        fetchBookmarks();
+    }, [currentUser]); //fetch bookmarks when current user changes
 
 
     useEffect(() => {
@@ -44,6 +66,7 @@ const Events = () => {
         setFilteredEvents(filtered);
     }, [category, price, searchTerm, startDate, endDate, events]);
 
+    /* //commented out to avoid confusion with firestore
     const toggleBookmark = (eventId) => {
         setBookmarkedEvents((prev) =>
           prev.includes(eventId)
@@ -51,6 +74,49 @@ const Events = () => {
             : [...prev, eventId]
         );
       };
+    */
+
+      //pass in the event object to the function
+    const toggleBookmark = async (event) => {
+        //if user isn't signed in, they cannot bookmark events. 
+        if(!currentUser) {
+            alert(language === "en" ? "Please login to bookmark events." : "Por favor, inicie sesion para marcar eventos.");
+            return;
+        }
+
+        //create a reference to the user's bookmarks collection in firestore
+        const bookmarksRef = doc(firestore, "users", currentUser.uid, "bookmarks", event.id);
+        //if bookmarked events includes the passed in event's id, then delete it from firestore and update the state
+        if (bookmarkedEvents.includes(event.id)) {
+            await deleteDoc(bookmarksRef);
+            setBookmarkedEvents((prev) => prev.filter((id) => id !== event.id));
+        } else {
+            console.log("event data saved: ", event);
+
+            //if the event is not already bookmarked, create the event data object
+            const eventData = {
+                id: event.id,
+                name: event.name || "Unknown Event Name",
+                image: event.images?.[0]?.url || "",
+                dates: {
+                    start: event.start || "Unknown Start Date",
+                    end: event.end || event.start || "Unknown End Date",
+                },
+                location: event.location,
+            };
+
+            try {
+                //save the event data to firestore
+                await setDoc(bookmarksRef, eventData);
+                //update the state with the new bookmarked event id
+                setBookmarkedEvents((prev) => [...prev, event.id]);
+            } catch (error) {
+                console.error("Error saving bookmark in firestore: ", error);
+            }
+
+            
+        }
+    };
 
     return (
         <div>
@@ -145,7 +211,7 @@ const Events = () => {
                     filteredEvents.map((event) => (
                  <div key={event.id} className="event-card">
                     <span className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
-                                        onClick={() => toggleBookmark(event.id)}
+                                        onClick={() => toggleBookmark(event)}
                     >
                         ★
                     </span>

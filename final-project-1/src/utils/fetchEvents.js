@@ -19,6 +19,7 @@ export const fetchEvents = async (language) => {
             },
         });
 
+        console.log("API Response:", response.data);
         const events = response.data._embedded?.events || [];
         return events.map((event) => ({
             id: event.id,
@@ -26,6 +27,7 @@ export const fetchEvents = async (language) => {
             start: event.dates?.start?.localDate,
             end: event.dates?.end?.localDate || event.dates?.start?.localDate,
             images: event.images || [],
+            location: event._embedded?.venues?.[0]?.name // Get the first venue name
         }));
     } catch (error) {
         console.error("Error fetching events:", error);
