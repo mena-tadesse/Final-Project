@@ -217,10 +217,12 @@ const Events = () => {
                         <FaRegBookmark />
                     </span>
                     <img src={event.images?.[0]?.url} alt={event.name} />
+                    <div className='event-content'> 
                         <h3>{event.name}</h3>
-                        <p>{event.dates?.start?.localDate}</p>
-                        <p>{event.classifications?.[0]?.segment?.name}</p>
+                        <p>Time: {event.dates?.start?.localDate}</p>
+                        <p>Category: {event.classifications?.[0]?.segment?.name}</p>
                         <Link to={`/events/${event.id}`}>View Details</Link>
+                        </div>
                     </div>
                     ))
                 ) : (
