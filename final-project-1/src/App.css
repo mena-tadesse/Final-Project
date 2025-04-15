@@ -792,3 +792,60 @@ body.dark-mode .navbar {
 .bookmark-icon.bookmarked {
   color: gold;
 }
+
+.event-detail-container { 
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 1000px;
+  color: #222;
+}
+
+.event-left {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.event-right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.event-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+}
+
+.event-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 16px;
+  background-color: #0078d4;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.event-link:hover {
+  background-color: #005ea6;
+}
