@@ -223,14 +223,14 @@ body.dark-mode .filters-section {
 
 
 .dark-mode .language-button {
-  background-color: #333333;
+  background-color: #1e1e1e;
   color: #ffffff;
   border: 1px solid #555555;
 }
 
 
 .dark-mode .dark-mode-b {
-  background-color: #333333;
+  background-color: #1e1e1e;
   color: #ffffff;
   border: 1px solid #555555;
 }
@@ -879,3 +879,4 @@ body.dark-mode .filters-section {
 .bookmark-icon.bookmarked {
   color: gold;
 }
+
