@@ -5,9 +5,9 @@ import { fetchEvents } from '../utils/fetchEvents';
 import { useAuth } from "../AuthContext";
 import { firestore } from "../config/config";
 import { doc, collection, getDocs, setDoc, deleteDoc} from "firebase/firestore";
-import { FaRegBookmark } from "react-icons/fa";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 
-const Events = () => {
+const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
     const [events, setEvents] = useState([]);
@@ -15,7 +15,7 @@ const Events = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const [bookmarkedEvents, setBookmarkedEvents] = useState([]);
+    
     const { language } = useContext(LanguageContext);
     const { currentUser } = useAuth(); //access the current user
 
@@ -23,11 +23,13 @@ const Events = () => {
     useEffect(() => {
         const loadEvents = async () => {
             const data = await fetchEvents(language);
-            setEvents(data);
-            setFilteredEvents(data);
+            
+                console.log("Extracted Events: ", data);
+                setEvents(data);
+                setFilteredEvents(data);
         };
         loadEvents();
-    }, [category, language]); 
+    }, [language]); 
 
     //fetch bookmarked events from firestore
     useEffect(() => {
@@ -53,20 +55,27 @@ const Events = () => {
             const eventCategory = event.classifications?.[0]?.segment?.name;
             const isFree = event.priceRanges?.[0]?.min === 0;
             const priceLabel = isFree ? "Free" : "Paid";
-
+            let normalizedPrice = price;
+            if (language === "es") {
+                if (price === "Gratis") normalizedPrice = "Free";
+                if (price === "De Pago") normalizedPrice = "Paid";
+            }
             const matchesCategory = category ? eventCategory === category : true;
-            const matchesPrice = price ? priceLabel === price : true;
+            /*const matchesPrice = price ? priceLabel === price : true;*/
+            const matchesPrice = price ? priceLabel === normalizedPrice : true;
             const matchesSearch = searchTerm ? event.name.toLowerCase().includes(searchTerm.toLowerCase()) : true;
-            const eventDate = event.dates?.start?.localDate;
+            const eventDate = event.start;
             const matchesStart = startDate ? eventDate >= startDate : true;
             const matchesEnd = endDate ? eventDate <= endDate : true;
 
             return matchesCategory && matchesPrice && matchesSearch && matchesStart && matchesEnd;
+
         });
 
         setFilteredEvents(filtered);
-    }, [category, price, searchTerm, startDate, endDate, events]);
+    }, [category, price, searchTerm, startDate, endDate, events, language]);
 
+    
     /* //commented out to avoid confusion with firestore
     const toggleBookmark = (eventId) => {
         setBookmarkedEvents((prev) =>
@@ -78,7 +87,7 @@ const Events = () => {
     */
 
       //pass in the event object to the function
-    const toggleBookmark = async (event) => {
+    /*const toggleBookmark = async (event) => {
         //if user isn't signed in, they cannot bookmark events. 
         if(!currentUser) {
             alert(language === "en" ? "Please login to bookmark events." : "Por favor, inicie sesion para marcar eventos.");
@@ -117,7 +126,15 @@ const Events = () => {
 
             
         }
-    };
+    };*/
+
+    const categories = [
+        { value: "Music", label: language === "en" ? "Music" : "Conciertos" },
+        { value: "Sports", label: language === "en" ? "Sports" : "Deportes" },
+        { value: "Arts & Theatre", label: language === "en" ? "Arts & Theatre" : "Arte y Teatro" },
+        { value: "Film", label: language === "en" ? "Film" : "Peliculas" },
+        { value: "Miscellaneous", label: language === "en" ? "Miscellaneous" : "Misceláneos" },
+    ];
 
     return (
         <div>
@@ -161,22 +178,25 @@ const Events = () => {
             <br />
             <br />
             <div className="category-filter">
-                {[
-                    language === "en" ? "Music" : "Conciertos",
+            
+                {
+                    
+                    /*language === "en" ? "Music" : "Conciertos",
                     language === "en" ? "Sports" : "Deportes",
                     language === "en" ? "Arts & Theatre" : "Arte y Teatro",
                     language === "en" ? "Film" : "Peliculas",
                     language === "en" ? "Miscellaneous" : "Misceláneos",
-                ].map((item) => (
-                    <label key={item}>
+                    */
+                categories.map((item) => (
+                    <label key={item.value}>
                         <input
                             type="radio"
                             name="category"
-                            value={item}
-                            checked={category === item}
+                            value={item.value}
+                            checked={category === item.value}
                             onChange={(e) => setCategory(e.target.value)}
                         />
-                        {item}
+                        {item.label}
                     </label>
                 ))}
             </div>
@@ -211,11 +231,19 @@ const Events = () => {
                 {filteredEvents.length > 0 ? (
                     filteredEvents.map((event) => (
                  <div key={event.id} className="event-card">
-                    <span className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
+
+<span
+        className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
+        onClick={() => toggleBookmark(event)}
+      >
+        {bookmarkedEvents.includes(event.id) ? <FaBookmark /> : <FaRegBookmark />}
+      </span>
+
+                    {/*<span className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
                                         onClick={() => toggleBookmark(event)}
                     >
                         <FaRegBookmark />
-                    </span>
+                    </span>*/}
                     <img src={event.images?.[0]?.url} alt={event.name} />
                     <div className='event-content'> 
                         <h3>{event.name}</h3>

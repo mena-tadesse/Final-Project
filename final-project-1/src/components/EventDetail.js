@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchEventById } from '../utils/fetchEvents';
 import { LanguageContext } from '../LanguageContext'; // Import LanguageContext
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 import '../App.css';
 
-const EventDetail = () => {
+const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
   const { id } = useParams();
   const { language } = useContext(LanguageContext); // Access the language context
   const [event, setEvent] = useState(null);
@@ -48,6 +49,14 @@ const EventDetail = () => {
     <div className="event-detail-container">
       <div className="event-left">
         <h2>{event.name}</h2>
+
+        <div
+          className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
+          onClick={() => toggleBookmark(event)}
+           >
+          {bookmarkedEvents.includes(event.id) ? <FaBookmark /> : <FaRegBookmark />}
+      </div>
+
         <p>
           <strong>{language === "en" ? "Category:" : "Categoría:"}</strong> {event.classifications?.[0]?.segment?.name} - {event.classifications?.[0]?.genre?.name}
         </p>
