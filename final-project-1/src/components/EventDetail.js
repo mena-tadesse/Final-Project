@@ -49,7 +49,7 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
     <div className="event-detail-container">
       <div className="event-left">
 
-        <p className="eventDetail-category">
+        <p>
           <strong>{language === "en" ? "Category:" : "Categoría:"}</strong> {event.classifications?.[0]?.segment?.name} - {event.classifications?.[0]?.genre?.name}
         </p>
 
@@ -64,7 +64,7 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
       </div>
 
         {/* Start and End Dates */}
-        <div className="eventDetail-dates">
+        <div>
         <p>
           <strong>{language === "en" ? "Start:" : "Inicio:"}</strong> {event.dates?.start?.localDate} {event.dates?.start?.localTime}
         </p>
@@ -80,8 +80,8 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
           </p>
         )}
 </div>
-
-        <p className="eventDetail-location">
+<div className="eventDetail-location">
+        <p>
           <strong>{language === "en" ? "Location:" : "Ubicación:"}</strong> {venue?.name}, {venue?.city?.name}, {venue?.state?.name}
         </p>
         <div className="eventDetail-description">
@@ -113,7 +113,7 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
           {language === "en" ? "View Event on Ticketmaster" : "Ver Evento en Ticketmaster"}
         </a>
       </div>
-
+    </div>
       <div className="event-right">
         {image && <img src={image} alt={event.name} className="event-image" />}
       </div>
