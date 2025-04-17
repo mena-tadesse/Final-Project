@@ -48,20 +48,23 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
   return (
     <div className="event-detail-container">
       <div className="event-left">
-        <h2>{event.name}</h2>
 
-        <div
+        <p className="eventDetail-category">
+          <strong>{language === "en" ? "Category:" : "Categoría:"}</strong> {event.classifications?.[0]?.segment?.name} - {event.classifications?.[0]?.genre?.name}
+        </p>
+
+      <div className="eventDetail-title">
+        <div 
           className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
           onClick={() => toggleBookmark(event)}
            >
           {bookmarkedEvents.includes(event.id) ? <FaBookmark /> : <FaRegBookmark />}
       </div>
-
-        <p>
-          <strong>{language === "en" ? "Category:" : "Categoría:"}</strong> {event.classifications?.[0]?.segment?.name} - {event.classifications?.[0]?.genre?.name}
-        </p>
+      <h2>{event.name}</h2>
+      </div>
 
         {/* Start and End Dates */}
+        <div className="eventDetail-dates">
         <p>
           <strong>{language === "en" ? "Start:" : "Inicio:"}</strong> {event.dates?.start?.localDate} {event.dates?.start?.localTime}
         </p>
@@ -76,14 +79,17 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
             <strong>{language === "en" ? "Status:" : "Estado:"}</strong> {event.dates.status.code}
           </p>
         )}
-        <p>
+</div>
+
+        <p className="eventDetail-location">
           <strong>{language === "en" ? "Location:" : "Ubicación:"}</strong> {venue?.name}, {venue?.city?.name}, {venue?.state?.name}
         </p>
+        <div className="eventDetail-description">
         {event.description && <p><strong>{language === "en" ? "Description:" : "Descripción:"}</strong> {event.description}</p>}
         {event.info && <p><strong>{language === "en" ? "Info:" : "Información:"}</strong> {event.info}</p>}
         {event.additionalInfo && <p><strong>{language === "en" ? "Additional Info:" : "Información Adicional:"}</strong> {event.additionalInfo}</p>}
         {event.pleaseNote && <p><strong>{language === "en" ? "Note:" : "Nota:"}</strong> {event.pleaseNote}</p>}
-
+        </div>
         {/* Price Range */}
         {price && (
           <p>

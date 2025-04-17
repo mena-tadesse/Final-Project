@@ -47,7 +47,7 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
             }
         };
         fetchBookmarks();
-    }, [currentUser]); //fetch bookmarks when current user changes
+    }, [currentUser, setBookmarkedEvents]); //fetch bookmarks when current user changes
 
 
     useEffect(() => {
@@ -247,8 +247,13 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
                     <img src={event.images?.[0]?.url} alt={event.name} />
                     <div className='event-content'> 
                         <h3>{event.name}</h3>
-                        <p>Time: {event.dates?.start?.localDate}</p>
-                        <p>Category: {event.classifications?.[0]?.segment?.name}</p>
+                        <p>{new Date(`${event.start}`).toLocaleDateString([], {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                        })}
+                        </p>
+                        <p>{event.classifications?.[0]?.segment?.name}</p>
                         <Link to={`/events/${event.id}`}>View Details</Link>
                         </div>
                     </div>
