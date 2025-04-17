@@ -24,6 +24,19 @@ body.dark-mode .navbar {
  background-color: #1e1e1e;
 
 }
+
+body.darkmode .navitems li span {
+
+  color: white;
+}
+
+body.darkmode .navitems li button {
+  background-color: #333333;
+  color: rgb(242, 237, 237);
+}
+
+
+
 /*spaces navbar evenly and gets rid of bullet points*/
 .navbar ul{
   display: flex;
@@ -39,6 +52,11 @@ body.dark-mode .navbar {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+body.dark-mode .icon {
+
+  color: white;
 }
 
 /*icon text*/
@@ -100,6 +118,16 @@ body.dark-mode .navbar {
   padding: 2px;
 }
 
+body.dark-mode .login-background-container {
+background-color: #232222;
+
+}
+
+body.dark-mode .login-container {
+  background: rgb(45, 44, 44);
+  color: white;
+  }
+
 /*container for login details*/
 .login-container{
   display: flex;
@@ -124,6 +152,89 @@ body.dark-mode .navbar {
 .login-container img:hover {
   opacity: 1;
 }
+
+body.dark-mode .auth-details-allignment input,
+body.dark-mode .auth-details-allignment-signup input {
+  background-color: #333333;
+  color: white;
+  border-color: #8F8F8F;
+}
+
+body.dark-mode .auth-details-allignment button,
+body.dark-mode .auth-details-allignment-signup button {
+  background-color: rgb(45,44,44);
+  color: white;
+}
+
+
+body.dark-mode .bookmarks-container {
+background-color: #1e1e1e;
+color: white;
+}
+
+body.dark-mode .bookmark-item {
+  background-color: #2a2a2a;
+  border-color: #444444;
+  color: white;
+  }
+
+  
+  body.dark-mode .account-navbar{
+  background-color: #1e1e1e;
+  color: white;
+
+  }
+
+  body.dark-mode .account-navbar nav ul li a {
+  color: #B0B0B0;
+
+  }
+
+  body.dark-mode .profile-container {
+  background-color: #1e1e1e;
+  color: white;
+
+  }
+
+
+body.dark-mode .spotlight {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+
+
+body.dark-mode .events-grid {
+  background-color: #1e1e1e;
+}
+
+
+body.dark-mode .event-card {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+
+
+body.dark-mode .filters-section {
+  background-color: #2a2a2a;
+  color:white;
+}
+
+
+.dark-mode .language-button {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #555555;
+}
+
+
+.dark-mode .dark-mode-b {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #555555;
+}
+
 
 
 /*div for the form the user must fill out to login*/
@@ -369,6 +480,8 @@ body.dark-mode .navbar {
   font-weight: semibold;
   width: 150px;
 }
+
+
 /* Events Page Details */
 #category-label {
   font-weight: bold;
@@ -442,45 +555,19 @@ body.dark-mode .navbar {
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  background-color: #EAEAEA;
-  /*border: 1px solid #ddd;*/
-  border: none;
+  background-color: #ddd;
+  border: 1px solid #ddd;
   border-radius: 15px;
-  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
 }
 
 /* Individual bookmark item styling */
 .bookmark-item {
-  display: flex;
   padding: 15px;
-  border-bottom: 1px solid #dedede;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #EAEAEA;
-}
-
-.bookmark-item-images{
-  display: flex;
-  margin-right: 20px;
-}
-
-.bookmark-item-images button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: #FFBB00;
-  font-size: 20px;
-  transition: color 0.3s ease;
-  margin-right: 20px;
-}
-
-.bookmark-item-images img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-  border: 1px solid #ffffff;
+  background-color: #f4f4f4;
 }
 
 .bookmark-item h2 {
@@ -492,7 +579,7 @@ body.dark-mode .navbar {
 .bookmark-item p {
   margin: 0;
   font-size: 14px;
-  color: #000000;
+  color: #666;
 }
 
 /*****ACCOUNT COMPONENT CSS*****/
@@ -731,6 +818,7 @@ body.dark-mode .navbar {
 .fc {
   box-sizing: border-box; /* Ensure proper box model for FullCalendar */
 }
+
 
 /* Events Page */
 
