@@ -27,7 +27,9 @@ export const fetchEvents = async (language) => {
             start: event.dates?.start?.localDate,
             end: event.dates?.end?.localDate || event.dates?.start?.localDate,
             images: event.images || [],
-            location: event._embedded?.venues?.[0]?.name // Get the first venue name
+            location: event._embedded?.venues?.[0]?.name, 
+            classifications: event.classifications || [],
+            priceRanges: event.priceRanges || [],
         }));
     } catch (error) {
         console.error("Error fetching events:", error);

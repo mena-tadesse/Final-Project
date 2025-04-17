@@ -4,7 +4,7 @@ import { useAuth } from "../AuthContext";
 import { LanguageContext } from "../LanguageContext"; // Import LanguageContext
 import { firestore } from "../config/config";
 import { doc, collection, getDocs, setDoc, deleteDoc } from "firebase/firestore";
-import { FaRegBookmark } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa";
 
 
 const Bookmarks = () => {
@@ -91,7 +91,7 @@ const Bookmarks = () => {
                             <div key={event.id} className="bookmark-item">
                                 <span className="bookmark-item-images">
                                     <button onClick={() => deleteBookmarkedEvent(event.id)}>
-                                        <FaRegBookmark />
+                                        <FaBookmark />
                                     </button>
                                     <img src={event.image} alt="Event Image" 
                                          onError={(e) => {
