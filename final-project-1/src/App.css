@@ -24,6 +24,19 @@ body.dark-mode .navbar {
  background-color: #1e1e1e;
 
 }
+
+body.darkmode .navitems li span {
+
+  color: white;
+}
+
+body.darkmode .navitems li button {
+  background-color: #333333;
+  color: rgb(242, 237, 237);
+}
+
+
+
 /*spaces navbar evenly and gets rid of bullet points*/
 .navbar ul{
   display: flex;
@@ -39,6 +52,11 @@ body.dark-mode .navbar {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+body.dark-mode .icon {
+
+  color: white;
 }
 
 /*icon text*/
@@ -100,6 +118,16 @@ body.dark-mode .navbar {
   padding: 2px;
 }
 
+body.dark-mode .login-background-container {
+background-color: #232222;
+
+}
+
+body.dark-mode .login-container {
+  background: rgb(45, 44, 44);
+  color: white;
+  }
+
 /*container for login details*/
 .login-container{
   display: flex;
@@ -124,6 +152,89 @@ body.dark-mode .navbar {
 .login-container img:hover {
   opacity: 1;
 }
+
+body.dark-mode .auth-details-allignment input,
+body.dark-mode .auth-details-allignment-signup input {
+  background-color: #333333;
+  color: white;
+  border-color: #8F8F8F;
+}
+
+body.dark-mode .auth-details-allignment button,
+body.dark-mode .auth-details-allignment-signup button {
+  background-color: rgb(45,44,44);
+  color: white;
+}
+
+
+body.dark-mode .bookmarks-container {
+background-color: #1e1e1e;
+color: white;
+}
+
+body.dark-mode .bookmark-item {
+  background-color: #2a2a2a;
+  border-color: #444444;
+  color: white;
+  }
+
+  
+  body.dark-mode .account-navbar{
+  background-color: #1e1e1e;
+  color: white;
+
+  }
+
+  body.dark-mode .account-navbar nav ul li a {
+  color: #B0B0B0;
+
+  }
+
+  body.dark-mode .profile-container {
+  background-color: #1e1e1e;
+  color: white;
+
+  }
+
+
+body.dark-mode .spotlight {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+
+
+body.dark-mode .events-grid {
+  background-color: #1e1e1e;
+}
+
+
+body.dark-mode .event-card {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+
+
+body.dark-mode .filters-section {
+  background-color: #2a2a2a;
+  color:white;
+}
+
+
+.dark-mode .language-button {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #555555;
+}
+
+
+.dark-mode .dark-mode-b {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #555555;
+}
+
 
 
 /*div for the form the user must fill out to login*/
@@ -369,6 +480,8 @@ body.dark-mode .navbar {
   font-weight: semibold;
   width: 150px;
 }
+
+
 /* Events Page Details */
 #category-label {
   font-weight: bold;
@@ -442,45 +555,19 @@ body.dark-mode .navbar {
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  background-color: #EAEAEA;
-  /*border: 1px solid #ddd;*/
-  border: none;
+  background-color: #ddd;
+  border: 1px solid #ddd;
   border-radius: 15px;
-  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
 }
 
 /* Individual bookmark item styling */
 .bookmark-item {
-  display: flex;
   padding: 15px;
-  border-bottom: 1px solid #dedede;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #EAEAEA;
-}
-
-.bookmark-item-images{
-  display: flex;
-  margin-right: 20px;
-}
-
-.bookmark-item-images button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: #FFBB00;
-  font-size: 20px;
-  transition: color 0.3s ease;
-  margin-right: 20px;
-}
-
-.bookmark-item-images img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-  border: 1px solid #ffffff;
+  background-color: #f4f4f4;
 }
 
 .bookmark-item h2 {
@@ -492,7 +579,7 @@ body.dark-mode .navbar {
 .bookmark-item p {
   margin: 0;
   font-size: 14px;
-  color: #000000;
+  color: #666;
 }
 
 /*****ACCOUNT COMPONENT CSS*****/
@@ -732,96 +819,55 @@ body.dark-mode .navbar {
   box-sizing: border-box; /* Ensure proper box model for FullCalendar */
 }
 
-/* Events Page */
+
+
+
+/* Css for the Events */
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.events-display {
+  flex: 3; 
+  max-height: 60vh;  
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.event-card {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
 .containers {
   display: flex;
-  gap: 150px;
-  padding: 20px;
+  gap: 2rem; 
+  align-items: flex-start;
+  padding: 2rem;
+  flex-wrap: wrap;
 }
 
 .filters-section {
-  width: 250px;
-  flex-shrink: 0;
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 12px;
-  height: fit-content;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-.events-display {
   flex: 1;
-  max-height: 65vh;
-  overflow-y: auto;
+  max-width: 300px;
+  position: sticky;
+  top: 1rem;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-
-.events-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-
-.event-card {
-  display: flex;
-  align-items: flex-start;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  position: relative;
-  transition: transform 0.2s ease;
-  width: 800px;
-  min-height: 160px;
-}
-
-.event-card:hover {
-  transform: scale(1.01);
-}
-.bookmark-icon {
-  font-size: 1.4rem;
-  color: #ccc;
-  cursor: pointer;
-  margin-right: 10px;
-  margin-top: 5px;
-  flex-shrink: 0;
-}
-.bookmark-icon.bookmarked {
-  color: #ff9800;
-}
 .event-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 15px;
-  flex-shrink: 0;
-}
-.event-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.event-content h3 {
-  margin: 0 0 6px;
-  font-size: 1.1rem;
-  color: #222;
-}
-.event-content p {
-  margin: 2px 0;
-  font-size: 0.9rem;
-  color: #555;
-}
-.event-content a {
-  margin-top: 6px;
-  font-weight: 500;
-  color: #007bff;
-  text-decoration: none;
-}
-.event-content a:hover {
-  text-decoration: underline;
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 8px; 
 }
 
 /* BookMark */
@@ -831,76 +877,5 @@ body.dark-mode .navbar {
 }
 
 .bookmark-icon.bookmarked {
-  color: gold;
-}
-
-/*  EventDetail */
-.event-detail-container { 
-  display: flex;
-  flex-wrap: wrap;
-  padding: 200px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 40px auto;
-  max-width: 1000px;
-  color: #222;
-}
-
-.event-left {
-  flex: 1;
-  min-width: 300px;
-  padding: 20px;
-}
-
-.event-right {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 10px;
-}
-
-.event-image-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.event-image {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  margin-bottom: 0;
-  margin-top: 0;
-  display: block;
-}
-
-.event-link {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 16px;
-  background-color: #0078d4;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.event-link:hover {
-  background-color: #005ea6;
-}
-.bookmark-icon{
-  cursor: pointer;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-
-
-.bookmark-icon.bookmarked{
   color: gold;
 }
