@@ -15,7 +15,6 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    
     const { language } = useContext(LanguageContext);
     const { currentUser } = useAuth(); //access the current user
 
@@ -47,8 +46,7 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
             }
         };
         fetchBookmarks();
-    }, [currentUser, setBookmarkedEvents]); //fetch bookmarks when current user changes
-
+    }, [currentUser, setBookmarkedEvents]); //fetch bookmarks when current user changes or when the bookmark state changes
 
     useEffect(() => {
         const filtered = events.filter((event) => {
@@ -74,59 +72,6 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
 
         setFilteredEvents(filtered);
     }, [category, price, searchTerm, startDate, endDate, events, language]);
-
-    
-    /* //commented out to avoid confusion with firestore
-    const toggleBookmark = (eventId) => {
-        setBookmarkedEvents((prev) =>
-          prev.includes(eventId)
-            ? prev.filter((id) => id !== eventId)
-            : [...prev, eventId]
-        );
-      };
-    */
-
-      //pass in the event object to the function
-    /*const toggleBookmark = async (event) => {
-        //if user isn't signed in, they cannot bookmark events. 
-        if(!currentUser) {
-            alert(language === "en" ? "Please login to bookmark events." : "Por favor, inicie sesion para marcar eventos.");
-            return;
-        }
-
-        //create a reference to the user's bookmarks collection in firestore
-        const bookmarksRef = doc(firestore, "users", currentUser.uid, "bookmarks", event.id);
-        //if bookmarked events includes the passed in event's id, then delete it from firestore and update the state
-        if (bookmarkedEvents.includes(event.id)) {
-            await deleteDoc(bookmarksRef);
-            setBookmarkedEvents((prev) => prev.filter((id) => id !== event.id));
-        } else {
-            console.log("event data saved: ", event);
-
-            //if the event is not already bookmarked, create the event data object
-            const eventData = {
-                id: event.id,
-                name: event.name || "Unknown Event Name",
-                image: event.images?.[0]?.url || "",
-                dates: {
-                    start: event.start || "Unknown Start Date",
-                    end: event.end || event.start || "Unknown End Date",
-                },
-                location: event.location,
-            };
-
-            try {
-                //save the event data to firestore
-                await setDoc(bookmarksRef, eventData);
-                //update the state with the new bookmarked event id
-                setBookmarkedEvents((prev) => [...prev, event.id]);
-            } catch (error) {
-                console.error("Error saving bookmark in firestore: ", error);
-            }
-
-            
-        }
-    };*/
 
     const categories = [
         { value: "Music", label: language === "en" ? "Music" : "Conciertos" },
@@ -164,13 +109,13 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
                 <div className="container"></div>
                 <label>{language === "en" ? "End Date" : "Fecha de Fin"}</label>
                 <input type="date" name="endDate" value={endDate} onChange={(e) => {setEndDate(e.target.value);}} />
-            <br />
-            <br />
-            <br />
+                <br />
+                <br />
+                <br />
         </div>
-    <div className="containers">
+        <div className="containers">
 
-<div className= "filters-section">
+        <div className= "filters-section">
 
             <label id="category-label">
                 {language === "en" ? "Category" : "Categoría"}
@@ -178,15 +123,7 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
             <br />
             <br />
             <div className="category-filter">
-            
                 {
-                    
-                    /*language === "en" ? "Music" : "Conciertos",
-                    language === "en" ? "Sports" : "Deportes",
-                    language === "en" ? "Arts & Theatre" : "Arte y Teatro",
-                    language === "en" ? "Film" : "Peliculas",
-                    language === "en" ? "Miscellaneous" : "Misceláneos",
-                    */
                 categories.map((item) => (
                     <label key={item.value}>
                         <input
@@ -223,27 +160,20 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
                     </label>
                 ))}
             </div>
-</div>
+        </div>
 
-            <div className="events-display">
-                <div className= "events-grid">
-
+        <div className="events-display">
+            <div className= "events-grid">
                 {filteredEvents.length > 0 ? (
                     filteredEvents.map((event) => (
                  <div key={event.id} className="event-card">
 
-<span
-        className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
-        onClick={() => toggleBookmark(event)}
-      >
-        {bookmarkedEvents.includes(event.id) ? <FaBookmark /> : <FaRegBookmark />}
-      </span>
-
-                    {/*<span className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
-                                        onClick={() => toggleBookmark(event)}
-                    >
-                        <FaRegBookmark />
-                    </span>*/}
+                <span
+                    className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
+                    onClick={() => toggleBookmark(event)}
+                >
+                    {bookmarkedEvents.includes(event.id) ? <FaBookmark /> : <FaRegBookmark />}
+                </span>
                     <img src={event.images?.[0]?.url} alt={event.name} />
                     <div className='event-content'> 
                         <h3>{event.name}</h3>
@@ -262,9 +192,8 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
                     <p>No events found for the selected filters.</p>
                 )}
                 </div>
-             </div>
+            </div>
         </div>
-
         </div>
     );
 };

@@ -4,13 +4,18 @@ import { fetchEventById } from '../utils/fetchEvents';
 import { LanguageContext } from '../LanguageContext'; // Import LanguageContext
 import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 import '../App.css';
+import { useAuth } from "../AuthContext"; // Import useAuth
+import { firestore } from "../config/config";
+import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore"; // Import Firestore functions
 
-const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
+const EventDetail = ({ bookmarkedEvents = [], toggleBookmark: parentToggleBookmark = () => {} }) => {
   const { id } = useParams();
   const { language } = useContext(LanguageContext); // Access the language context
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { currentUser } = useAuth();
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,6 +42,47 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
     return () => controller.abort();
   }, [id, language]);
 
+  // Check if the event is bookmarked
+  useEffect(() => {
+    const checkBookmark = async () => {
+      if (currentUser) {
+        const bookmarkRef = doc(firestore, "users", currentUser.uid, "bookmarks", id);
+        const bookmarkDoc = await getDoc(bookmarkRef);
+        setIsBookmarked(bookmarkDoc.exists());
+      }
+    };
+    checkBookmark();
+  }, [currentUser, id]);
+
+  // Toggle bookmark status
+  const handleToggleBookmark = async () => {
+    if (!currentUser) {
+      alert(language === "en" ? "Please login to bookmark events." : "Por favor, inicie sesión para marcar eventos.");
+      return;
+    }
+    const bookmarkRef = doc(firestore, "users", currentUser.uid, "bookmarks", id);
+    if (isBookmarked) {
+      // Remove bookmark
+      await deleteDoc(bookmarkRef);
+      setIsBookmarked(false);
+    } else {
+      // Add bookmark
+      const eventData = {
+        id: event.id,
+        name: event.name || "Unknown Event Name",
+        image: event.images?.[0]?.url || "",
+        dates: {
+          start: event.dates?.start?.localDate || "Unknown Start Date",
+          end: event.dates?.end?.localDate || event.dates?.start?.localDate || "Unknown End Date",
+        },
+        location: event._embedded?.venues?.[0]?.name || "Unknown Location",
+      };
+
+      await setDoc(bookmarkRef, eventData);
+      setIsBookmarked(true);
+    }
+  };
+
   if (loading) return <p>{language === "en" ? "Loading..." : "Cargando..."}</p>;
   if (error) return <p>{error}</p>;
   if (!event) return <p>{language === "en" ? "No event data available." : "No hay datos del evento disponibles."}</p>;
@@ -55,10 +101,10 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark = () => {} }) => {
 
       <div className="eventDetail-title">
         <div 
-          className={`bookmark-icon ${bookmarkedEvents.includes(event.id) ? 'bookmarked' : ''}`}
-          onClick={() => toggleBookmark(event)}
+          className={`bookmark-icon ${isBookmarked ? 'bookmarked' : ''}`}
+          onClick={handleToggleBookmark}
            >
-          {bookmarkedEvents.includes(event.id) ? <FaBookmark /> : <FaRegBookmark />}
+          {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
       </div>
       <h2>{event.name}</h2>
       </div>
