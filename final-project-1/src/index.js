@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './AuthContext';
 import { LanguageProvider } from './LanguageContext';
+import { DarkModeProvider } from './DarkModeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider> 
       <LanguageProvider>
-        <App />
+        <DarkModeProvider>
+          <App />
+        </DarkModeProvider>
       </LanguageProvider>
     </AuthProvider>
   </React.StrictMode>

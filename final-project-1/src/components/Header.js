@@ -8,6 +8,7 @@ import { TbLogin2 } from "react-icons/tb";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { LanguageContext } from "../LanguageContext";
+import { DarkModeContext } from "../DarkModeContext"; 
 
 const Header = ({ setBookmarkedEvents }) => {
     // Gets current route
@@ -15,20 +16,8 @@ const Header = ({ setBookmarkedEvents }) => {
     const navigate = useNavigate();
     const { currentUser, logout } = useAuth();
     const { language, toggleLanguage } = useContext(LanguageContext);
-    const [darkMode, setDarkMode] = React.useState(false);
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext); 
 
-    const toggleDarkMode = () => {
-     setDarkMode(!darkMode);
-     };
-        
-     useEffect(() => {
-      if (darkMode) {
-        document.body.classList.add("dark-mode");
-      } else{
-        document.body.classList.remove("dark-mode");
-      }
-
-     },    [darkMode]);
     // Handle logout
     const handleLogout = async () => {
         try {

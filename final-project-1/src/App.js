@@ -87,7 +87,7 @@ function AppContent() {
           {/*Protected Route is used to prevent users from accessing account & Calendar if they aren't logged in*/}
           <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} /> 
           <Route path="bookmarks" element={<Bookmarks />} />
-          <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
+          <Route path="/calendar" element={<Calendar />} />
         </Routes>
     </div>
   );

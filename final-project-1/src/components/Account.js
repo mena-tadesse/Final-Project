@@ -110,7 +110,7 @@ const Account = () => {
                     </ul>
                 </nav>
                 <button className="delete-account-button" onClick={handleDeleteAccount}>
-                    {language === "en" ? "Delete Account" : "Eliminar Cuenta"}
+                    {language === "en" ? "Delete" : "Eliminar"}
                 </button>
             </div>
             <div className="profile-container">

@@ -1,42 +1,22 @@
 /*****BODY CSS*****/
 
 /*prevents scrolling*/
-body, html {
+body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
-body.dark-mode {
- background-color: rgb(10, 9, 9);
- color: white;
 
-}
 
 /*****HEADER COMPONENT CSS*****/
 .navbar {
   background-color: #1782B4;
   height: 70px;
   padding: 10px;
+  overflow: hidden;
 }
-
-body.dark-mode .navbar {
- background-color: #1e1e1e;
-
-}
-
-body.darkmode .navitems li span {
-
-  color: white;
-}
-
-body.darkmode .navitems li button {
-  background-color: #333333;
-  color: rgb(242, 237, 237);
-}
-
-
-
+  
 /*spaces navbar evenly and gets rid of bullet points*/
 .navbar ul{
   display: flex;
@@ -54,10 +34,6 @@ body.darkmode .navitems li button {
   justify-content: center;
 }
 
-body.dark-mode .icon {
-
-  color: white;
-}
 
 /*icon text*/
 .navitems li span {
@@ -109,6 +85,7 @@ body.dark-mode .icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 }
 
 /*charlotte icon on authentication pages*/
@@ -118,15 +95,7 @@ body.dark-mode .icon {
   padding: 2px;
 }
 
-body.dark-mode .login-background-container {
-background-color: #232222;
 
-}
-
-body.dark-mode .login-container {
-  background: rgb(45, 44, 44);
-  color: white;
-  }
 
 /*container for login details*/
 .login-container{
@@ -152,90 +121,6 @@ body.dark-mode .login-container {
 .login-container img:hover {
   opacity: 1;
 }
-
-body.dark-mode .auth-details-allignment input,
-body.dark-mode .auth-details-allignment-signup input {
-  background-color: #333333;
-  color: white;
-  border-color: #8F8F8F;
-}
-
-body.dark-mode .auth-details-allignment button,
-body.dark-mode .auth-details-allignment-signup button {
-  background-color: rgb(45,44,44);
-  color: white;
-}
-
-
-body.dark-mode .bookmarks-container {
-background-color: #1e1e1e;
-color: white;
-}
-
-body.dark-mode .bookmark-item {
-  background-color: #2a2a2a;
-  border-color: #444444;
-  color: white;
-  }
-
-  
-  body.dark-mode .account-navbar{
-  background-color: #1e1e1e;
-  color: white;
-
-  }
-
-  body.dark-mode .account-navbar nav ul li a {
-  color: #B0B0B0;
-
-  }
-
-  body.dark-mode .profile-container {
-  background-color: #1e1e1e;
-  color: white;
-
-  }
-
-
-body.dark-mode .spotlight {
-  background-color: #2a2a2a;
-  color: white;
-}
-
-
-
-body.dark-mode .events-grid {
-  background-color: #1e1e1e;
-}
-
-
-body.dark-mode .event-card {
-  background-color: #2a2a2a;
-  color: white;
-}
-
-
-
-body.dark-mode .filters-section {
-  background-color: #2a2a2a;
-  color:white;
-}
-
-
-.dark-mode .language-button {
-  background-color: #1e1e1e;
-  color: #ffffff;
-  border: 1px solid #555555;
-}
-
-
-.dark-mode .dark-mode-b {
-  background-color: #1e1e1e;
-  color: #ffffff;
-  border: 1px solid #555555;
-}
-
-
 
 /*div for the form the user must fill out to login*/
 .auth-details-alignment form{
@@ -484,7 +369,7 @@ body.dark-mode .filters-section {
 
 /* Events Page Details */
 .events-container {
-  overflow: auto;
+  overflow: hidden;
 }
 
 #category-label {
@@ -754,6 +639,7 @@ body.dark-mode .filters-section {
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
 }
 
@@ -766,6 +652,7 @@ body.dark-mode .filters-section {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .explore-the-city {
@@ -805,6 +692,7 @@ body.dark-mode .filters-section {
   flex-direction: row;
   justify-content: center;
   gap: 30px;
+  overflow: hidden;
 
 }
 
@@ -992,13 +880,14 @@ body.dark-mode .filters-section {
 .event-detail-container { 
   display: flex;
   flex-wrap: wrap;
-  padding: 200px;
+  padding: 0px;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 40px auto;
   max-width: 1000px;
   color: #222;
+  overflow: auto;
 }
 
 .event-left {
@@ -1079,3 +968,180 @@ body.dark-mode .filters-section {
 .bookmark-icon.bookmarked{
   color: gold;
 }
+
+
+
+/*****DARK MODE*****/
+body.dark-mode {
+  background-color: #242424;
+}
+
+/*nav bar*/
+body.dark-mode .icon {
+  color: black;
+}
+
+body.dark-mode .navitems li span {
+  color: black;
+}
+
+body.dark-mode .navitems li a.active .icon,
+body.dark-mode .navitems li a.active span {
+  color: #FFEFAF; 
+}
+
+/*home page dark mode*/
+
+body.dark-mode .home-container-last-p {
+  color: #8F8F8F;
+}
+
+/* account page dark mode */
+body.dark-mode .account-navbar h2, 
+body.dark-mode .account-navbar nav ul li a {
+  color: #DBDBDB;
+}
+
+body.dark-mode .profile-container {
+  background-color: #545454;
+  color: #e7e7e7;
+}
+
+body.dark-mode .show-password-button {
+  background-color: #545454;
+}
+
+body.dark-mode #upload-image {
+  border: 1px solid #f8f8f8;
+}
+
+/*bookmarks page darkmode */
+body.dark-mode .account-navbar h2, 
+body.dark-mode .account-navbar nav ul li a {
+  color: #DBDBDB;
+}
+
+body.dark-mode .bookmarks-container,
+body.dark-mode .bookmarks-box,
+body.dark-mode .bookmark-item {
+  background-color: #545454;
+  color: #e7e7e7;
+}
+
+body.dark-mode .show-password-button {
+  background-color: #545454;
+}
+
+body.dark-mode #upload-image {
+  border: 1px solid #f8f8f8;
+}
+
+body.dark-mode .bookmark-item-details h2, body.dark-mode .bookmark-item-details p{
+  color: #f8f8f8;
+}
+
+body.dark-mode .bookmark-item{
+  border-bottom: 1px solid #767676;
+}
+
+/*events page darkmode */
+body.dark-mode .event-header {
+  color: #cacaca;
+}
+
+body.dark-mode #searchBar, 
+body.dark-mode #start-date-css, 
+body.dark-mode #end-date-css {
+  background-color: #545454;
+  color: #f8f8f8;
+  border: 0.5px solid #949494;
+}
+
+body.dark-mode .filters-section, 
+body.dark-mode .filters-section #category-label,
+body.dark-mode .filters-section #price-label
+ {
+  background-color: #242424;
+  color: #cacaca;
+}
+
+body.dark-mode .event-card {
+  background-color: #323232;
+}
+
+body.dark-mode .event-card h3,
+body.dark-mode .event-card p {
+  color: #cacaca;
+}
+
+/*event detail dark mode */
+body.dark-mode .event-detail-container {
+  background-color: #242424;
+  color: #cacaca;
+}
+
+body.dark-mode .event-right div img {
+  border: 0.5px solid #cacaca;
+}
+
+/*calendar dark mode */
+body.dark-mode .full-calendar-container {
+  color: #a7a7a7;
+}
+
+body.dark-mode .fc-daygrid-event {
+  background-color: #1a3460;
+  color: #f8f8f8;
+}
+
+body.dark-mode .fc-daygrid-event:hover {
+  background-color: #3b78be;
+  color: #f8f8f8;
+}
+
+/*login dark mode */
+body.dark-mode .login-container {
+  background-color: rgba(3, 3, 3, 0.7);
+}
+
+body.dark-mode .auth-details-alignment{
+  color: #cacaca
+}
+
+body.dark-mode .auth-details-alignment input{
+  border: 0.5px solid #cacaca;
+  background-color: rgba(58, 58, 58, 0.7);
+  color: #fdfdfd;
+}
+
+body.dark-mode .signup-path-content-container p {
+  color: #000000;
+}
+
+body.dark-mode .signup-path-content-container button {
+  background-color: #1e1e1e;
+}
+
+/*sign up dark mode */
+body.dark-mode .login-container {
+  background-color: rgba(3, 3, 3, 0.7);
+}
+
+body.dark-mode .auth-details-alignment-signup{
+  color: #cacaca
+}
+
+body.dark-mode .auth-details-alignment-signup input{
+  border: 0.5px solid #cacaca;
+  background-color: rgba(58, 58, 58, 0.7);
+  color: #fdfdfd;
+}
+
+body.dark-mode .login-path-content-container p {
+  color: #000000;
+}
+
+body.dark-mode .login-path-content-container button {
+  background-color: #1e1e1e;
+}
+
