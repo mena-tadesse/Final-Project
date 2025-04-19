@@ -9,7 +9,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { LanguageContext } from "../LanguageContext";
 
-const Header = () => {
+const Header = ({ setBookmarkedEvents }) => {
     // Gets current route
     const location = useLocation();
     const navigate = useNavigate();
@@ -33,6 +33,7 @@ const Header = () => {
     const handleLogout = async () => {
         try {
             await logout(); // Calls logout function in AuthContext
+            setBookmarkedEvents([]); // Clear bookmarks on logout
             navigate("/");
         } catch (error) {
             console.error("Error logging out: ", error);

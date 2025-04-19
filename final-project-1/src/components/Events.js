@@ -82,7 +82,7 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
     ];
 
     return (
-        <div>
+        <div className="events-container">
             <h1 className="event-header">
                 {language === "en" ? "Upcoming Events" : "Próximos Eventos"}
             </h1>
@@ -94,6 +94,7 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
 
             <div className="container">
                 <input
+                    id="searchBar"
                     type="text"
                     name="search"
                     placeholder={language === "en" ? "Search" : "Buscar"}
@@ -105,60 +106,58 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
                 />
                 
                 <label>{language === "en" ? "Start Date" : "Fecha de Inicio"}</label>
-                <input type="date" name="startDate" value={startDate} onChange={(e) => {setStartDate(e.target.value);}} />
-                <div className="container"></div>
+                <input id="start-date-css" type="date" name="startDate" value={startDate} onChange={(e) => {setStartDate(e.target.value);}} />
+                
                 <label>{language === "en" ? "End Date" : "Fecha de Fin"}</label>
-                <input type="date" name="endDate" value={endDate} onChange={(e) => {setEndDate(e.target.value);}} />
+                <input id="end-date-css" type="date" name="endDate" value={endDate} onChange={(e) => {setEndDate(e.target.value);}} />
                 <br />
                 <br />
                 <br />
         </div>
         <div className="containers">
-
-        <div className= "filters-section">
-
-            <label id="category-label">
-                {language === "en" ? "Category" : "Categoría"}
-            </label>
-            <br />
-            <br />
-            <div className="category-filter">
-                {
-                categories.map((item) => (
-                    <label key={item.value}>
-                        <input
-                            type="radio"
-                            name="category"
-                            value={item.value}
-                            checked={category === item.value}
-                            onChange={(e) => setCategory(e.target.value)}
-                        />
-                        {item.label}
-                    </label>
-                ))}
-            </div>
-            <br />
-            <label id="price-label">
-                {language === "en" ? "Prices" : "Precios"}
-            </label>
-            <br />
-            <br />
-            <div className="price-filter">
-                {[
-                    language === "en" ? "Free" : "Gratis",
-                    language === "en" ? "Paid" : "De Pago",
-                ].map((item) => (
-                    <label key={item}>
-                        <input
-                            type="radio"
-                            name="price"
-                            value={item}
-                            checked={price === item}
-                            onChange={(e) => setPrice(e.target.value)}
-                        />
-                        {item}
-                    </label>
-                ))}
+            <div className= "filters-section">
+                <label id="category-label">
+                    {language === "en" ? "Category" : "Categoría"}
+                </label>
+                <br />
+                <br />
+                <div className="category-filter">
+                    {
+                    categories.map((item) => (
+                        <label key={item.value}>
+                            <input
+                                type="radio"
+                                name="category"
+                                value={item.value}
+                                checked={category === item.value}
+                                onChange={(e) => setCategory(e.target.value)}
+                            />
+                            {item.label}
+                        </label>
+                    ))}
+                </div>
+                <br />
+                <label id="price-label">
+                    {language === "en" ? "Prices" : "Precios"}
+                </label>
+                <br />
+                <br />
+                <div className="price-filter">
+                    {[
+                        language === "en" ? "Free" : "Gratis",
+                        language === "en" ? "Paid" : "De Pago",
+                    ].map((item) => (
+                        <label key={item}>
+                            <input
+                                type="radio"
+                                name="price"
+                                value={item}
+                                checked={price === item}
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
+                            {item}
+                        </label>
+                    ))}
             </div>
         </div>
 

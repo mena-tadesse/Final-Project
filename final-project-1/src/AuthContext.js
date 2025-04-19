@@ -6,8 +6,10 @@ import {
   signInWithEmailAndPassword, //logs users in
   signOut, //logs out
   deleteUser, //deletes user
+  reauthenticateWithCredential, //re-authenticates user
+  EmailAuthProvider, //provides email and password for re-authentication
 } from "firebase/auth";
-import { doc, getDoc, deleteDoc } from "firebase/firestore"; // Firestore functions
+import { doc, getDoc, deleteDoc, getDocs, collection } from "firebase/firestore"; // Firestore functions
 import { deleteObject, getStorage, ref } from "firebase/storage";
 
 // Initial state
@@ -133,8 +135,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   //Delete user function
-  const deleteAccount = async (user) => { //we pass in the user details
+  const deleteAccount = async (user, email, password) => { //we pass in the user details
     try{
+      
+      // Step 1: Re-authenticate the user
+      const credential = EmailAuthProvider.credential(email, password);
+      await reauthenticateWithCredential(user, credential);
 
       //when we delete the user, we must also delete their profile picture from storage
       const storage = getStorage(); //initialize storage reference
@@ -144,6 +150,14 @@ export const AuthProvider = ({ children }) => {
       //when we delete the user we must also delete the user's data from database
       const userRef = doc(firestore, "users", user.uid); //get the user reference from firestore
       await deleteDoc(userRef);
+
+      //delete the user's bookmarks from firestore
+      const bookmarksRef = collection(firestore, "users", user.uid, "bookmarks"); //get the user's bookmarks collection reference
+      const bookmarksSnapshot = await getDocs(bookmarksRef); //get all the documents in the bookmarks collection
+      
+      // Use Promise.all to delete all bookmarks concurrently
+      const deletePromises = bookmarksSnapshot.docs.map((doc) => deleteDoc(doc.ref));
+      await Promise.all(deletePromises);
 
       //delete the user's instance from firebase authentication
       await deleteUser(user);

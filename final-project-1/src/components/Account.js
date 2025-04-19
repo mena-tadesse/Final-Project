@@ -75,6 +75,14 @@ const Account = () => {
         // If confirmDelete is true...
         if (confirmDelete) {
             try {
+                // Prompt the user for their email and password
+                const email = prompt(language === "en" ? "Enter your email:" : "Ingrese su correo electrónico:");
+                const password = prompt(language === "en" ? "Enter your password:" : "Ingrese su contraseña:");
+
+                if (!email || !password) {
+                    alert(language === "en" ? "Email and password are required." : "Se requieren correo electrónico y contraseña.");
+                    return;
+                }
                 await deleteAccount(currentUser); // Calls deleteAccount() function from AuthContext.js & passes in currentUserInfo
                 navigate("/"); // Redirect to home after deletion
             } catch (error) {

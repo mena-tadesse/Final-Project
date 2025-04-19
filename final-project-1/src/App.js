@@ -74,7 +74,7 @@ function AppContent() {
   return (
     <div className="App">
         {/*display the header if the pathName isn't login or signup*/}
-        {!hideHeader && <Header />}
+        {!hideHeader && <Header setBookmarkedEvents={setBookmarkedEvents}/>}
         {/*Create the routes*/}
         <Routes>
           <Route path="/" element={<Home />} />
