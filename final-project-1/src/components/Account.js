@@ -83,7 +83,7 @@ const Account = () => {
                     alert(language === "en" ? "Email and password are required." : "Se requieren correo electrónico y contraseña.");
                     return;
                 }
-                await deleteAccount(currentUser); // Calls deleteAccount() function from AuthContext.js & passes in currentUserInfo
+                await deleteAccount(email, password); // Calls deleteAccount() function from AuthContext.js & passes in currentUserInfo
                 navigate("/"); // Redirect to home after deletion
             } catch (error) {
                 console.error("Error deleting account:", error);

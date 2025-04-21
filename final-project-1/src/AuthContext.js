@@ -8,6 +8,7 @@ import {
   deleteUser, //deletes user
   reauthenticateWithCredential, //re-authenticates user
   EmailAuthProvider, //provides email and password for re-authentication
+  getAuth,
 } from "firebase/auth";
 import { doc, getDoc, deleteDoc, getDocs, collection } from "firebase/firestore"; // Firestore functions
 import { deleteObject, getStorage, ref } from "firebase/storage";
@@ -135,25 +136,41 @@ export const AuthProvider = ({ children }) => {
   };
 
   //Delete user function
-  const deleteAccount = async (user, email, password) => { //we pass in the user details
+  const deleteAccount = async (email, password) => { //we pass in the user details
+    console.log("deleteAccount called");
     try{
-      
-      // Step 1: Re-authenticate the user
+      console.log("Deleting user account...");
+      //Get the current user
+      //we have to call the current user again because the user
+      //object we defined was modified, and didn't include all the
+      //properties that the user object from firebase has
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (!user) {
+          throw new Error("No authenticated user found.");
+      }
+
+      //Re-authenticate the user
       const credential = EmailAuthProvider.credential(email, password);
       await reauthenticateWithCredential(user, credential);
+      console.log("Re-authentication successful");
 
       //when we delete the user, we must also delete their profile picture from storage
       const storage = getStorage(); //initialize storage reference
       const profilePictureRef = ref(storage, `profilePictures/${user.uid}/profile.jpg`); //get reference to user's profile picture
       await deleteObject(profilePictureRef); //delete the profile picture from storage
+      console.log("Profile picture deleted");
 
       //when we delete the user we must also delete the user's data from database
       const userRef = doc(firestore, "users", user.uid); //get the user reference from firestore
       await deleteDoc(userRef);
+      console.log("User data deleted from Firestore");
 
       //delete the user's bookmarks from firestore
       const bookmarksRef = collection(firestore, "users", user.uid, "bookmarks"); //get the user's bookmarks collection reference
       const bookmarksSnapshot = await getDocs(bookmarksRef); //get all the documents in the bookmarks collection
+      console.log("Bookmarks deleted");
       
       // Use Promise.all to delete all bookmarks concurrently
       const deletePromises = bookmarksSnapshot.docs.map((doc) => deleteDoc(doc.ref));
@@ -161,6 +178,7 @@ export const AuthProvider = ({ children }) => {
 
       //delete the user's instance from firebase authentication
       await deleteUser(user);
+      console.log("User deleted from Firebase Authentication");
     } catch (error) {
       console.error("Error deleting user: ", error);
       throw error;
