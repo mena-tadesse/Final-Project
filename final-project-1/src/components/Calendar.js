@@ -38,6 +38,7 @@ const Calendar = () => {
                 locale={language === "en" ? enLocale : esLocale}
                 events={events} 
                 eventClick={handleEventClick} 
+                showNonCurrentDates={false}
             />
         </div>
     );

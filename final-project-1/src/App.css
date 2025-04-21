@@ -1,12 +1,22 @@
 /*****BODY CSS*****/
 
+
 /*prevents scrolling*/
 body {
   margin: 0;
   padding: 0;
-  overflow: auto;
+  overflow: hidden;
+
 }
 
+html {
+  height: 100%;
+}
+
+.App {
+  height: 100vh;
+  overflow: hidden;
+}
 
 
 /*****HEADER COMPONENT CSS*****/
@@ -61,7 +71,7 @@ body {
 }
 
 /*Aligns, centers, and gets rid of underline for icon&text (for route icons only)*/
-.navitems li a {
+.navitems li a, .navitems li button {
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -369,7 +379,11 @@ body {
 
 /* Events Page Details */
 .events-container {
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+  padding-bottom: 100px;
+  box-sizing: border-box;
 }
 
 #category-label {
@@ -527,7 +541,7 @@ body {
 
 .account-navbar {
   margin-left: 150px;
-  width: 20%;
+  width: 21%;
 }
 
 .account-navbar h2{
@@ -692,7 +706,6 @@ body {
   flex-direction: row;
   justify-content: center;
   gap: 30px;
-  overflow: hidden;
 
 }
 
@@ -748,14 +761,45 @@ body {
   font-weight: 600;
 }
 
+/*****CALENDAR COMPONENT CSS*****/
 .full-calendar-container {
   width: 100%; /* Ensure the calendar takes the full width */
   height: 100vh; /* Set the height to fill the viewport */
   overflow: auto; /* Allow scrolling if necessary */
 }
 
+.full-calendar-container .fc-daygrid {
+  height: 100%; /* Ensure the calendar takes the full height */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 100px;
+}
+
+.full-calendar-container .fc-toolbar {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.full-calendar-container .fc-today-button,
+.full-calendar-container .fc-next-button, 
+.full-calendar-container .fc-prev-button {
+  background-color: #425BB3 !important;
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+
 .fc {
   box-sizing: border-box; /* Ensure proper box model for FullCalendar */
+}
+
+.full-calendar-container .fc-day-other {
+  background-color: #e6e6e6; /* Light gray for other days */
+}
+
+.full-calendar-container .fc-daygrid-event:hover {
+  cursor: pointer;
 }
 
 
@@ -794,6 +838,7 @@ body {
   max-height: 65vh;
   overflow-y: auto;
   margin-left: -50px;
+  overflow-x: hidden;
 }
 
 
@@ -877,17 +922,27 @@ body {
 }
 
 /*  EventDetail */
+
+.event-detail-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+}
+
 .event-detail-container { 
   display: flex;
   flex-wrap: wrap;
-  padding: 0px;
-  background-color: white;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 40px auto;
   max-width: 1000px;
   color: #222;
-  overflow: auto;
+  padding-right: 10px; 
 }
 
 .event-left {
@@ -937,7 +992,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   margin-bottom: 0;
-  margin-top: 0;
+  margin-top: 60px;
   display: block;
 }
 
@@ -1057,6 +1112,15 @@ body.dark-mode #end-date-css {
   border: 0.5px solid #949494;
 }
 
+body.dark-mode #no-events-listed {
+  color: #cacaca;
+}
+
+body.dark-mode #start-date-label-css,
+body.dark-mode #end-date-label-css {
+  color: #cacaca;
+}
+
 body.dark-mode .filters-section, 
 body.dark-mode .filters-section #category-label,
 body.dark-mode .filters-section #price-label
@@ -1082,6 +1146,10 @@ body.dark-mode .event-detail-container {
 
 body.dark-mode .event-right div img {
   border: 0.5px solid #cacaca;
+}
+
+body.dark-mode .event-image {
+  border: 1px solid #a5a5a5;
 }
 
 /*calendar dark mode */

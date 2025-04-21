@@ -92,6 +92,7 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark: parentToggleBookma
   const price = event.priceRanges?.[0];
 
   return (
+    <div className="event-detail-wrapper">
     <div className="event-detail-container">
       <div className="event-left">
 
@@ -163,6 +164,7 @@ const EventDetail = ({ bookmarkedEvents = [], toggleBookmark: parentToggleBookma
       <div className="event-right">
         {image && <img src={image} alt={event.name} className="event-image" />}
       </div>
+    </div>
     </div>
   );
 };

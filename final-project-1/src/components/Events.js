@@ -105,10 +105,10 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
                 }
                 />
                 
-                <label>{language === "en" ? "Start Date" : "Fecha de Inicio"}</label>
+                <label for="start-date-css" id="start-date-label-css">{language === "en" ? "Start Date" : "Fecha de Inicio"}</label>
                 <input id="start-date-css" type="date" name="startDate" value={startDate} onChange={(e) => {setStartDate(e.target.value);}} />
                 
-                <label>{language === "en" ? "End Date" : "Fecha de Fin"}</label>
+                <label for="end-date-css" id="end-date-label-css">{language === "en" ? "End Date" : "Fecha de Fin"}</label>
                 <input id="end-date-css" type="date" name="endDate" value={endDate} onChange={(e) => {setEndDate(e.target.value);}} />
                 <br />
                 <br />
@@ -188,7 +188,7 @@ const Events = ({ bookmarkedEvents, toggleBookmark, setBookmarkedEvents }) => {
                     </div>
                     ))
                 ) : (
-                    <p>No events found for the selected filters.</p>
+                    <p id="no-events-listed">No events found for the selected filters.</p>
                 )}
                 </div>
             </div>
