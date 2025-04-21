@@ -837,7 +837,7 @@ html {
   flex: 1;
   max-height: 65vh;
   overflow-y: auto;
-  margin-left: -50px;
+  margin-left: 60px;
   overflow-x: hidden;
 }
 
@@ -846,12 +846,13 @@ html {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-left: 10px;
 }
 
 
 .event-card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -873,6 +874,12 @@ html {
   margin-right: 10px;
   margin-top: 5px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-right: 10px;
+  
 }
 .bookmark-icon.bookmarked {
   color: #ff9800;
